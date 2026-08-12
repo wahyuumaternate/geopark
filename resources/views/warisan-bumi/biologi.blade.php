@@ -150,9 +150,15 @@
                 @endphp
 
                 @foreach ($biologis as $key => $item)
+                    @php
+                        $detailUrl = route('warisan-bumi.detail', [
+                            'section' => 'biologi',
+                            'slug' => \Illuminate\Support\Str::slug($item['nama']),
+                        ]);
+                    @endphp
                     <div class="col-md-4 d-flex ftco-animate mb-4">
                         <div class="blog-entry justify-content-end w-100">
-                            <a href="#" class="block-20" style="background-image: url('{{ asset('frontend/gambar/' . $item['image']) }}');">
+                            <a href="{{ $detailUrl }}" class="block-20" style="background-image: url('{{ asset('frontend/gambar/' . $item['image']) }}');">
                             </a>
                             <div class="text">
                                 <div class="d-flex align-items-center mb-4 topp">
@@ -164,9 +170,9 @@
                                         <span class="mos">{{ $item['kecamatan'] }}</span>
                                     </div>
                                 </div>
-                                <h3 class="heading"><a href="#">{{ $item['nama'] }}</a></h3>
+                                <h3 class="heading"><a href="{{ $detailUrl }}">{{ $item['nama'] }}</a></h3>
                                 <p>{{ $item['lokasi'] }}</p>
-                                <p><a href="#" class="btn btn-primary">Read more</a></p>
+                                <p><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
                             </div>
                         </div>
                     </div>

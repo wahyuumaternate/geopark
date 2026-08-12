@@ -48,13 +48,13 @@
 
                 {{-- Warisan Bumi --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="warisanDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="{{ url('/warisan-bumi') }}" id="warisanDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Warisan Bumi
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="warisanDropdown">
-                        <a class="dropdown-item" href="{{ url('/warisan-bumi') }}">
+                        <a class="dropdown-item" href="{{ url('/warisan-bumi/geologi') }}">
                             Warisan Geologi
                         </a>
 

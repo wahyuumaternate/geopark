@@ -42,16 +42,12 @@
                         Masirete dan Pantai Jikomalomo. Struktur lava pahoehoe di
                         Sulamadaha juga menjadi bukti karakter erupsi efusif gunung ini.
                     </p>
-                    <p>
-                        Selain aliran lava, terdapat pula bentukan maar seperti Maar
-                        Tolire dan Maar Ngade, serta endapan freatomagmatik dan
-                        piroklastik yang tersebar di beberapa kelurahan di Kota Ternate.
-                    </p>
+
                 </div>
 
                 <div class="col-md-6 d-flex align-items-stretch order-md-last ftco-animate">
                     <div class="img d-flex w-100 align-items-center justify-content-center"
-                        style="background-image:url('{{ asset('frontend/gambar/batuangus2.jpeg') }}');">
+                        style="background-image:url('{{ asset('frontend/gambar/batuangus.png') }}');">
                     </div>
                 </div>
 
@@ -75,11 +71,7 @@
                         Pulau Hiri, keberadaan lava Mujiumajiko dan ignimbrit Gurabala
                         Tomajiko melengkapi catatan sejarah vulkanik kawasan ini.
                     </p>
-                    <p>
-                        Setiap geosite memiliki nilai ilmiah dan edukasi tersendiri
-                        untuk memahami proses pembentukan Pulau Ternate dan Pulau Hiri
-                        dari waktu ke waktu.
-                    </p>
+
                 </div>
 
             </div>
@@ -100,14 +92,14 @@
                     $geosites = [
                         [
                             'nama' => 'Lava Erupsi 1907 Tubo',
-                            'image' => 'bg2.jpeg',
+                            'image' => 'tubo.jpg',
                             'lokasi' => 'Kelurahan Tubo, Ternate Utara, Kota Ternate',
                             'deskripsi' =>
                                 'Sisa aliran lava dari letusan 1907 yang masih menampilkan struktur basaltik keras dan lapisan lava beku.',
                         ],
                         [
                             'nama' => 'Lava Erupsi 1737 Batu Angus',
-                            'image' => 'batuangus2.jpeg',
+                            'image' => 'batuangus.png',
                             'lokasi' => 'Kelurahan Kulaba, Ternate Barat, Kota Ternate',
                             'deskripsi' =>
                                 'Singkapan lava dan tufa hasil letusan besar 1737, nama Batu Angus muncul karena warna hitam pekat yang terbakar.',
@@ -235,9 +227,15 @@
                 @endphp
 
                 @foreach ($geosites as $key => $geosite)
+                    @php
+                        $detailUrl = route('warisan-bumi.detail', [
+                            'section' => 'geologi',
+                            'slug' => \Illuminate\Support\Str::slug($geosite['nama']),
+                        ]);
+                    @endphp
                     <div class="col-md-4 d-flex ftco-animate mb-4">
                         <div class="blog-entry justify-content-end w-100">
-                            <a href="#" class="block-20"
+                            <a href="{{ $detailUrl }}" class="block-20"
                                 style="background-image: url('{{ asset('frontend/gambar/' . $geosite['image']) }}');">
                             </a>
                             <div class="text p-4 bg-white">
@@ -250,9 +248,9 @@
                                         <span class="mos">{{ $geosite['lokasi'] }}</span>
                                     </div>
                                 </div>
-                                <h3 class="heading"><a href="#">{{ $geosite['nama'] }}</a></h3>
+                                <h3 class="heading"><a href="{{ $detailUrl }}">{{ $geosite['nama'] }}</a></h3>
                                 <p>{{ $geosite['deskripsi'] }}</p>
-                                <p><a href="#" class="btn btn-primary">Read more</a></p>
+                                <p><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
                             </div>
                         </div>
                     </div>
