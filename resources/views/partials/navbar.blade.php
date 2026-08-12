@@ -32,24 +32,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="tentangDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Tentang Kami
+                        Tentang
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="tentangDropdown">
                         <a class="dropdown-item" href="{{ url('/tentang-kami') }}">
-                            Tentang
+                            Maksud & Tujuan
                         </a>
 
                         <a class="dropdown-item" href="{{ url('/pengelola') }}">
-                            Badan Pengelola
+                            Tentang
                         </a>
                     </div>
                 </li>
 
                 {{-- Warisan Bumi --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="warisanDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="warisanDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Warisan Bumi
                     </a>
 
@@ -83,9 +83,9 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="unduhDropdown">
-                        <a class="dropdown-item" href="{{ url('/unduh') }}">
+                        {{-- <a class="dropdown-item" href="{{ url('/unduh') }}">
                             Dokumen
-                        </a>
+                        </a> --}}
 
                         <a class="dropdown-item" href="{{ url('/unduh/publikasi') }}">
                             Publikasi

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // Tentang Kami
 Route::get('/tentang-kami', function () {
-    return view('tentang-kami.index');
+    return view('tentang-kami');
 })->name('tentang-kami');
 
 // Badan Pengelola
@@ -27,7 +27,7 @@ Route::get('/pengelola', function () {
 
 // Warisan Bumi
 Route::get('/warisan-bumi', function () {
-    return view('warisan-bumi.index');
+    return view('warisan-bumi.geologi');
 })->name('warisan-bumi');
 
 Route::get('/warisan-bumi/biologi', function () {
