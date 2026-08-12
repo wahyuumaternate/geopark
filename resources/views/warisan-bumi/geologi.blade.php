@@ -234,23 +234,25 @@
                         ]);
                     @endphp
                     <div class="col-md-4 d-flex ftco-animate mb-4">
-                        <div class="blog-entry justify-content-end w-100">
+                        <div class="blog-entry w-100 d-flex flex-column h-100">
                             <a href="{{ $detailUrl }}" class="block-20"
                                 style="background-image: url('{{ asset('frontend/gambar/' . $geosite['image']) }}');">
                             </a>
-                            <div class="text p-4 bg-white">
-                                <div class="d-flex align-items-center mb-4 topp">
-                                    <div class="one">
-                                        <span class="day">{{ $key + 1 }}</span>
+                            <div class="text p-4 bg-white d-flex flex-column h-100">
+                                <div>
+                                    <div class="d-flex align-items-center mb-4 topp">
+                                        <div class="one">
+                                            <span class="day">{{ $key + 1 }}</span>
+                                        </div>
+                                        <div class="two">
+                                            <span class="yr">Geosite</span>
+                                            <span class="mos">{{ $geosite['lokasi'] }}</span>
+                                        </div>
                                     </div>
-                                    <div class="two">
-                                        <span class="yr">Geosite</span>
-                                        <span class="mos">{{ $geosite['lokasi'] }}</span>
-                                    </div>
+                                    <h3 class="heading"><a href="{{ $detailUrl }}">{{ $geosite['nama'] }}</a></h3>
+                                    <p>{{ $geosite['deskripsi'] }}</p>
                                 </div>
-                                <h3 class="heading"><a href="{{ $detailUrl }}">{{ $geosite['nama'] }}</a></h3>
-                                <p>{{ $geosite['deskripsi'] }}</p>
-                                <p><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
+                                <p class="mt-auto mb-0"><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
                             </div>
                         </div>
                     </div>

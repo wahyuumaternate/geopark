@@ -1,14 +1,15 @@
 @extends('layouts.main')
 
 @section('title', 'Geopark Ternate | Warisan Geologi, Alam & Budaya Ternate')
-@section('meta_description', 'Geopark Ternate merupakan kawasan yang memiliki kekayaan warisan geologi, keanekaragaman
+@section('meta_description',
+    'Geopark Ternate merupakan kawasan yang memiliki kekayaan warisan geologi, keanekaragaman
     hayati, dan warisan budaya. Jelajahi geosite, geowisata, edukasi, konservasi, dan potensi masyarakat Ternate.')
 
     @push('styles')
         <style>
             /* =================================
-               PETA GEOPARK TERNATE
-            ================================= */
+                               PETA GEOPARK TERNATE
+                            ================================= */
             .geopark-map-content p {
                 color: #555;
                 line-height: 1.8;
@@ -32,8 +33,8 @@
             }
 
             /* =================================
-               MOBILE
-            ================================= */
+                               MOBILE
+                            ================================= */
             @media (max-width: 767.98px) {
 
                 .geopark-map-content {
@@ -46,14 +47,13 @@
                 }
 
             }
-          
         </style>
     @endpush
 
 @section('content')
 
     <div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('frontend/gambar/tolire1.jpg') }}');">
-     <div class="overlay2"></div>
+        <div class="overlay2"></div>
 
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
@@ -148,7 +148,7 @@
                         {{-- Geowisata --}}
                         <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
                             <div class="services services-1 color-3 d-block img"
-                                style="background-image: url('{{ asset('frontend/gambar/batuangus2.jpeg') }}');">
+                                style="background-image: url('{{ asset('frontend/gambar/batu-angus1.png') }}');">
 
                                 <div class="icon d-flex align-items-center justify-content-center">
                                     <span class="flaticon-route"></span>
