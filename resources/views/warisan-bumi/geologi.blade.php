@@ -1,8 +1,8 @@
-```blade
 @extends('layouts.main')
 
 @section('title', 'Warisan Geologi | Geopark Ternate')
-@section('meta_description', 'Warisan geologi Geopark Ternate yang terbentuk dari aktivitas vulkanik Gunung Gamalama dan
+@section('meta_description',
+    'Warisan geologi Geopark Ternate yang terbentuk dari aktivitas vulkanik Gunung Gamalama dan
     proses geologi yang membentuk Pulau Ternate.')
 
 @section('page_bg', 'frontend/gambar/kuso.jpeg')
@@ -192,4 +192,3 @@
     </section>
 
 @endsection
-```
