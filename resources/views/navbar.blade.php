@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white ftco-navbar-light" id="ftco-navbar">
+<nav class="navbarv  navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 
         {{-- Logo --}}
@@ -40,7 +40,7 @@
                             Tentang
                         </a>
 
-                        <a class="dropdown-item" href="{{ url('/pengelola') }}">
+                        <a class="dropdown-item" href="{{ url('/tentang-kami/pengelola') }}">
                             Badan Pengelola
                         </a>
                     </div>
@@ -48,8 +48,8 @@
 
                 {{-- Warisan Bumi --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="warisanDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="warisanDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Warisan Bumi
                     </a>
 

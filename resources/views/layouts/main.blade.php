@@ -10,11 +10,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="description"
-        content="@yield('meta_description', 'Geopark Ternate merupakan kawasan yang memiliki kekayaan warisan geologi, keanekaragaman hayati, dan warisan budaya. Jelajahi geosite, geowisata, edukasi, konservasi, dan potensi masyarakat Ternate.')">
+    <meta name="description" content="@yield('meta_description', 'Geopark Ternate merupakan kawasan yang memiliki kekayaan warisan geologi, keanekaragaman hayati, dan warisan budaya. Jelajahi geosite, geowisata, edukasi, konservasi, dan potensi masyarakat Ternate.')">
 
-    <meta name="keywords"
-        content="@yield('meta_keywords', 'Geopark Ternate, Geopark Maluku Utara, Geowisata Ternate, Gunung Gamalama, geosite Ternate, warisan geologi Ternate, wisata Ternate, pariwisata Ternate')">
+    <meta name="keywords" content="@yield('meta_keywords', 'Geopark Ternate, Geopark Maluku Utara, Geowisata Ternate, Gunung Gamalama, geosite Ternate, warisan geologi Ternate, wisata Ternate, pariwisata Ternate')">
 
     <meta name="author" content="Geopark Ternate">
 
@@ -25,7 +23,7 @@
     <meta name="revisit-after" content="7 days">
 
     {{-- Canonical --}}
-    <link rel="canonical" href="@yield('canonical', url('/'))">
+    <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- =========================
          FAVICON
@@ -41,8 +39,7 @@
 
     <meta property="og:title" content="@yield('og_title', 'Geopark Ternate | Warisan Geologi, Alam & Budaya')">
 
-    <meta property="og:description"
-        content="@yield('og_description', 'Jelajahi kekayaan geologi, keanekaragaman hayati, budaya, dan destinasi geowisata Geopark Ternate.')">
+    <meta property="og:description" content="@yield('og_description', 'Jelajahi kekayaan geologi, keanekaragaman hayati, budaya, dan destinasi geowisata Geopark Ternate.')">
 
     <meta property="og:url" content="{{ url()->current() }}">
 
@@ -61,8 +58,7 @@
 
     <meta name="twitter:title" content="@yield('og_title', 'Geopark Ternate | Warisan Geologi, Alam & Budaya')">
 
-    <meta name="twitter:description"
-        content="@yield('og_description', 'Informasi Geopark Ternate mengenai warisan geologi, geosite, geowisata, keanekaragaman hayati, budaya, edukasi, dan konservasi.')">
+    <meta name="twitter:description" content="@yield('og_description', 'Informasi Geopark Ternate mengenai warisan geologi, geosite, geowisata, keanekaragaman hayati, budaya, edukasi, dan konservasi.')">
 
     <meta name="twitter:image" content="@yield('og_image', asset('frontend/gambar/logo1.png'))">
 
@@ -143,6 +139,33 @@
         }
 
         /* ================================
+           NAVBAR - DEFAULT PUTIH, TANPA ANIMASI/TRANSPARANSI SCROLL
+        ================================= */
+
+        #ftco-navbar,
+        #ftco-navbar.scrolled,
+        #ftco-navbar.awake,
+        #ftco-navbar.affix,
+        #ftco-navbar.navbar-dark,
+        .ftco_navbar {
+            background: #ffffff !important;
+            position: relative !important;
+            top: 0 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            transition: none !important;
+        }
+
+        #ftco-navbar .navbar-brand,
+        #ftco-navbar .nav-link,
+        #ftco-navbar .navbar-toggler {
+            color: #000000 !important;
+        }
+
+        #ftco-navbar .navbar-toggler {
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* ================================
            NAVBAR
         ================================= */
 
@@ -216,7 +239,7 @@
 
             .geopark-logo-text {
                 font-size: 8px !important;
-                color: #ffffff !important;
+                color: #000000 !important;
             }
 
             .ftco-navbar-light .dropdown-menu {
@@ -227,6 +250,52 @@
                 font-size: 13px;
             }
         }
+
+        /* ================================
+           PAGE HEADER / BREADCRUMB
+        ================================= */
+
+        .hero-wrap-2 {
+            height: 55vh;
+            min-height: 320px;
+        }
+
+        .hero-wrap-2 .breadcrumbs a {
+            color: #ffffff;
+            opacity: 0.85;
+        }
+
+        .hero-wrap-2 .breadcrumbs a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .hero-wrap-2 .breadcrumbs span:last-child {
+            color: #F96D00;
+        }
+
+          /* =================================
+   HERO OVERLAY
+================================= */
+.hero-wrap {
+    position: relative;
+}
+
+.hero-wrap .overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 100%);
+    z-index: 1;
+}
+
+.hero-wrap .container {
+    position: relative;
+    z-index: 2;
+}
+
     </style>
 
     {{-- Slot untuk CSS tambahan khusus per halaman --}}
@@ -238,6 +307,8 @@
     @include('partials.navbar')
     <!-- END nav -->
 
+    {{-- z --}}
+
     @yield('content')
 
     @include('partials.footer')
@@ -245,9 +316,10 @@
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00" />
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke-miterlimit="10" stroke="#F96D00" />
         </svg>
     </div>
 
