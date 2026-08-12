@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>{{ @$title != '' ? "$title - " : '' }} Geopark Ternate Admin</title>
+    <meta content="Dashboard dan admin panel Geopark Ternate" name="description">
+    <meta content="geopark, ternate, admin, dashboard" name="keywords">
+
+    {{-- =========================
+         FAVICON
+    ========================== --}}
+    <link rel="icon" type="image/png" href="{{ asset('frontend/gambar/logo1.png') }}">
+
+    <link rel="apple-touch-icon" href="{{ asset('frontend/gambar/logo1.png') }}">
+
+    <!-- Favicons -->
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <meta name="google-site-verification" content="google69c24c1e039d4a91" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+
+    @notifyCss
+    <style>
+        .notify {
+            position: fixed;
+            /* Ensure it is fixed */
+            top: 20px;
+            /* Adjust as needed */
+            right: 20px;
+            /* Adjust as needed */
+            z-index: 9999;
+            /* Make sure this is a high value */
+        }
+
+        .btn-custom {
+
+            /* Default transparent background */
+            color: #000;
+            /* Default text color */
+            border: 1px solid #000;
+            /* Border color */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition */
+        }
+
+        .btn-custom:hover {
+            background-color: #28a745;
+            /* Green for success */
+            color: white;
+            /* Change text color on hover */
+        }
+
+        .btn-info {
+
+            /* Default transparent background */
+            color: #007bff;
+            /* Default text color */
+            border: 1px solid #007bff;
+            /* Border color */
+        }
+
+        .btn-success {
+
+            /* Default transparent background */
+            color: #09b900;
+            /* Default text color */
+            border: 1px solid #09b900;
+            /* Border color */
+        }
+
+        .btn-info:hover {
+            background-color: #17a2b8;
+            /* Light blue for info */
+            color: white;
+            /* Change text color on hover */
+        }
+
+        .btn-danger {
+
+            /* Default transparent background */
+            color: #dc3545;
+            /* Default text color */
+            border: 1px solid #dc3545;
+            /* Border color */
+        }
+
+        .btn-danger:hover {
+            background-color: #dc3545;
+            /* Red for danger */
+            color: white;
+            /* Change text color on hover */
+        }
+
+        body,
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        @media (max-width: 767px) {
+
+            body,
+            html {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+
+        .swal2-confirm {
+            background-color: #3085d6 !important;
+            color: #fff !important;
+        }
+
+        .swal2-cancel {
+            background-color: #d33 !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    @include('admin.layouts.header')
+
+    <!-- ======= Sidebar ======= -->
+    @include('admin.layouts.sidebar')
+
+
+    <main id="main" class="main">
+        @yield('main')
+
+        {{-- <div class="pagetitle">
+            <h1>Blank Page</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Pages</li>
+                    <li class="breadcrumb-item active">Blank</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+        </section> --}}
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    @include('admin.layouts.footer')
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('admin/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/chart.js/chart.umd.js') }}"></script>
+    <script src="{{ asset('admin/vendor/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/quill/quill.js') }}"></script>
+    <script src="{{ asset('admin/vendor/simple-datatables/simple-datatables.js') }}"></script>
+    {{-- <script src="{{ asset('admin/vendor/tinymce/tinymce.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('admin/vendor/php-email-form/validate.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset('admin/js/main.js') }}"></script>
+
+    <x-notify::notify />
+    @notifyJs
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data ini akan dihapus secara permanen!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Jika pengguna mengkonfirmasi, submit form delete
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            });
+        }
+    </script>
+
+    @yield('scripts')
+</body>
+
+</html>
