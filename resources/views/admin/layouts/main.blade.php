@@ -38,6 +38,7 @@
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
 
     @notifyCss
+    @yield('styles')
     <style>
         .notify {
             position: fixed;
@@ -183,6 +184,9 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('admin/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -196,9 +200,6 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
-
-    <x-notify::notify />
-    @notifyJs
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GeologiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WarisanBumiController;
 use Illuminate\Support\Facades\Route;
@@ -95,6 +96,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Admin Geologi Routes
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('geologi', GeologiController::class);
+    });
 });
 
 require __DIR__ . '/auth.php';

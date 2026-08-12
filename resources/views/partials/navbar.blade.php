@@ -59,7 +59,7 @@
                         </a>
 
                         <a class="dropdown-item" href="{{ url('/warisan-bumi/biologi') }}">
-                            Warisan Biologi
+                            Warisan Hayati
                         </a>
 
                         <a class="dropdown-item" href="{{ url('/warisan-bumi/budaya') }}">

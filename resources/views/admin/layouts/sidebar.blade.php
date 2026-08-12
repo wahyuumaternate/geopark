@@ -21,7 +21,7 @@
             <ul id="warisan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
 
                 <li>
-                    <a href="{{ url('/warisan-bumi/geologi') }}">
+                    <a href="{{ route('admin.geologi.index') }}">
                         <i class="bi bi-circle"></i>
                         <span>Geologi</span>
                     </a>
