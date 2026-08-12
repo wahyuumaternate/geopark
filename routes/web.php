@@ -38,10 +38,25 @@ Route::get('/warisan-bumi/budaya', function () {
     return view('warisan-bumi.budaya');
 })->name('warisan-bumi.budaya');
 
-// Berita / Events / Youth Forum (satu halaman yang sama)
+// Berita
+Route::get('/berita', function () {
+    return view('berita');
+})->name('berita');
+
+// Events
+Route::get('/events', function () {
+    return view('events');
+})->name('events');
+
+// Youth Forum
 Route::get('/youth-forum', function () {
     return view('youth-forum');
 })->name('youth-forum');
+
+// Detail Informasi
+Route::get('/detail', function () {
+    return view('detail');
+})->name('detail');
 
 // Unduh
 Route::get('/unduh', function () {
@@ -71,16 +86,16 @@ Route::get('/berita-dan-informasi', function () {
     return view('berita-dan-informasi');
 })->name('berita-dan-informasi');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';

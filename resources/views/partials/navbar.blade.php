@@ -70,8 +70,15 @@
 
                 {{-- Berita --}}
                 <li class="nav-item">
-                    <a href="{{ url('/youth-forum') }}" class="nav-link">
+                    <a href="{{ url('/berita') }}" class="nav-link">
                         Berita
+                    </a>
+                </li>
+
+                {{-- Events --}}
+                <li class="nav-item">
+                    <a href="{{ url('/events') }}" class="nav-link">
+                        Events
                     </a>
                 </li>
 
@@ -95,13 +102,6 @@
                             Peraturan
                         </a>
                     </div>
-                </li>
-
-                {{-- Events --}}
-                <li class="nav-item">
-                    <a href="{{ url('/youth-forum') }}" class="nav-link">
-                        Events
-                    </a>
                 </li>
 
                 {{-- Youth Forum --}}

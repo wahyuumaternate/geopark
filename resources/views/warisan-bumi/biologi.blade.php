@@ -97,4 +97,82 @@
         </div>
     </section>
 
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center pb-4">
+                <div class="col-md-9 text-center heading-section ftco-animate">
+                    <span class="subheading">Geopark Ternate</span>
+                    <h2 class="mb-4">Daftar Keanekaragaman Biologi</h2>
+                    <p>Contoh spesies dan lokasi penting di wilayah Geopark Ternate yang menunjukkan nilai konservasi dan keunikan warisan biologis.</p>
+                </div>
+            </div>
+
+            <div class="row d-flex">
+                @php
+                    $biologis = [
+                        [
+                            'nama' => 'Kuskus Matabiru (Phalanger matabiru)',
+                            'image' => 'kuso.jpeg',
+                            'lokasi' => 'Kel. Takome (Ekowisata Pulo Tareba, sisi barat Danau Tolire); juga tercatat di Kulaba & Kelurahan Sasa',
+                            'kecamatan' => 'Ternate Barat; Ternate Selatan',
+                        ],
+                        [
+                            'nama' => 'Burung Kasturi/Nuri Ternate (Lorius garrulus)',
+                            'image' => 'burung-nuri.png',
+                            'lokasi' => 'Kel. Takome Kawasan Danau Tolire (hutan primer/sekunder ke arah barat) dan sekitar Ngade',
+                            'kecamatan' => 'Ternate Barat; Ternate Selatan',
+                        ],
+                        [
+                            'nama' => 'Cengkeh (Syzygium aromaticum L)',
+                            'image' => 'bg2.jpeg',
+                            'lokasi' => 'Kel. Marikurubu (Dusun/Lingkungan Tongole, kompleks Air Tege-tege) — lokasi cengkeh Afo, cengkeh tertua di dunia; juga tersebar luas di kebun-kebun lereng Gamalama',
+                            'kecamatan' => 'Ternate Tengah (cengkeh Afo); tersebar juga di Ternate Pulau, Ternate Barat',
+                        ],
+                        [
+                            'nama' => 'Pala (Myristica fragrans)',
+                            'image' => 'peta-geopark.jpg',
+                            'lokasi' => 'Kel. Marikurubu dan Kel. Foramadiahi (kebun pala-cengkeh di lereng selatan Gamalama)',
+                            'kecamatan' => 'Ternate Tengah; Ternate Pulau',
+                        ],
+                        [
+                            'nama' => 'Bunga Telang (Clitoria ternatea)',
+                            'image' => 'soya-soya.jpeg',
+                            'lokasi' => 'Tumbuh tersebar (liar/budidaya pekarangan) di berbagai kelurahan — tidak ada sentra lokasi spesifik tercatat',
+                            'kecamatan' => 'Tersebar di seluruh kecamatan Kota Ternate',
+                        ],
+                        [
+                            'nama' => 'Tanaman Patah Tulang (Euphorbia tirucalli)',
+                            'image' => 'peta-geopark.jpg',
+                            'lokasi' => 'Kel. Kulaba (Batu Angus) merupakan tanaman asli dan endemik Pulau Ternate. Tanaman ini mudah ditemukan tumbuh liar atau merambat di pekarangan rumah, pagar, pinggiran hutan, dan dekat tepi kali mati di seluruh wilayah Ternate',
+                            'kecamatan' => 'Tersebar di seluruh kecamatan Kota Ternate',
+                        ],
+                    ];
+                @endphp
+
+                @foreach ($biologis as $key => $item)
+                    <div class="col-md-4 d-flex ftco-animate mb-4">
+                        <div class="blog-entry justify-content-end w-100">
+                            <a href="#" class="block-20" style="background-image: url('{{ asset('frontend/gambar/' . $item['image']) }}');">
+                            </a>
+                            <div class="text">
+                                <div class="d-flex align-items-center mb-4 topp">
+                                    <div class="one">
+                                        <span class="day">{{ $key + 1 }}</span>
+                                    </div>
+                                    <div class="two">
+                                        <span class="yr">Biologi</span>
+                                        <span class="mos">{{ $item['kecamatan'] }}</span>
+                                    </div>
+                                </div>
+                                <h3 class="heading"><a href="#">{{ $item['nama'] }}</a></h3>
+                                <p>{{ $item['lokasi'] }}</p>
+                                <p><a href="#" class="btn btn-primary">Read more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
 @endsection
