@@ -274,28 +274,27 @@
             color: #F96D00;
         }
 
-          /* =================================
+        /* =================================
    HERO OVERLAY
 ================================= */
-.hero-wrap {
-    position: relative;
-}
+        .hero-wrap {
+            position: relative;
+        }
 
-.hero-wrap .overlay2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 100%);
-    z-index: 1;
-}
+        .hero-wrap .overlay2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.55) 100%);
+            z-index: 1;
+        }
 
-.hero-wrap .container {
-    position: relative;
-    z-index: 2;
-}
-
+        .hero-wrap .container {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 
     {{-- Slot untuk CSS tambahan khusus per halaman --}}
@@ -319,7 +318,7 @@
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
                 stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke-miterlimit="10" stroke="#F96D00" />
+                stroke-miterlimit="10" stroke="#17a2b8" />
         </svg>
     </div>
 
