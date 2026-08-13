@@ -90,7 +90,7 @@ class WarisanBumiController extends Controller
                     'image' => $item->image ? asset('storage/' . $item->image) : null,
                     'lat' => (float) $item->y,
                     'lng' => (float) $item->x,
-                    'detail_url' => route('warisanbumi.detail', ['section' => $item->section, 'slug' => $item->slug]),
+                    'detail_url' => route('warisan-bumi.detail', ['section' => $item->section, 'slug' => $item->slug]),
                 ];
             })
             ->values();

@@ -36,7 +36,7 @@ Route::get('/warisan-bumi/biologi/peta', [WarisanBumiController::class, 'petaBio
 Route::get('/warisan-bumi/budaya/peta', [WarisanBumiController::class, 'petaBudaya'])->name('warisanbumi.budaya.peta');
 
 // tetap di bawah:
-Route::get('/warisan-bumi/{section}/{slug}', [WarisanBumiController::class, 'detail'])->name('warisanbumi.detail');
+Route::get('/warisan-bumi/{section}/{slug}', [WarisanBumiController::class, 'detail'])->name('warisan-bumi.detail');
 
 // Informasi
 // Berita
