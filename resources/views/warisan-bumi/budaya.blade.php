@@ -38,11 +38,6 @@
                         Kota Ternate. Benteng ini berdiri sebagai saksi perkembangan Ternate pada masa perdagangan
                         rempah-rempah, ketika wilayah Maluku Utara memiliki posisi strategis dalam jalur perdagangan dunia.
                     </p>
-                    {{-- <p>
-                        Keberadaan Benteng Oranje hingga saat ini memperlihatkan jejak sejarah pertahanan, perdagangan, dan
-                        hubungan Ternate dengan berbagai bangsa yang datang ke kawasan Maluku. Benteng ini menjadi salah
-                        satu peninggalan bersejarah yang memperkaya nilai budaya dan sejarah Kota Ternate.
-                    </p> --}}
 
                 </div>
 
@@ -71,10 +66,6 @@
                         Kedua kesenian ini rutin ditampilkan dalam berbagai acara adat dan
                         kunjungan wisata budaya.
                     </p>
-                    {{-- <p>
-                        Kuliner rempah khas Ternate, seperti olahan pala dan cengkih, turut
-                        melengkapi kekayaan warisan budaya yang dapat dinikmati wisatawan.
-                    </p> --}}
                 </div>
 
             </div>
@@ -92,197 +83,17 @@
             </div>
 
             <div class="row d-flex">
-                @php
-                    $budayas = [
-                        [
-                            'nama' => 'Benteng Kastela',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Kastela',
-                            'kecamatan' => 'Pulau Ternate',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Fuerza Nueva',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Kastela',
-                            'kecamatan' => 'Pulau Ternate',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Kota Janji',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Kalumata / Ngade',
-                            'kecamatan' => 'Ternate Selatan',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Kalamata',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Kayu Merah',
-                            'kecamatan' => 'Ternate Selatan',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Talangame',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Sebutan lain/lokasi asal Benteng Kalamata',
-                            'kecamatan' => 'Ternate Selatan',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Callaboeka',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Sangaji (dekat Benteng Toloko)',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Voorbrught',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Area Benteng Oranje',
-                            'kecamatan' => 'Ternate Tengah',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Oranje',
-                            'image' => 'benteng-orange.jpg',
-                            'lokasi' => 'Kel. Gamalama',
-                            'kecamatan' => 'Ternate Tengah',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Kedaton Kesultanan',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Salero',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Kotanaka',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Benteng Sentosa (samping Kedaton Sultan)',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Toloko',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Kel. Sangaji Utara',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Benteng Willemstad',
-                            'image' => 'benteng.jpg',
-                            'lokasi' => 'Benteng Takome, Kel. Takome',
-                            'kecamatan' => 'Barat Laut Ternate / Pulau Ternate',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Klenteng Thian Hou Kiong',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Gamalama',
-                            'kecamatan' => 'Ternate Tengah',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Gereja St. Willibrordus',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Tanah Raja',
-                            'kecamatan' => 'Ternate Tengah',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Mesjid Sultan',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Sigi Lamo, Kel. Soa Sio',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Kuburan Keramat/ Jere Kulaba',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Kulaba',
-                            'kecamatan' => 'Ternate Barat',
-                            'jenis' => 'Benda',
-                        ],
-                        [
-                            'nama' => 'Ritual Uci Dowong',
-                            'image' => 'tari-lenso.jpeg',
-                            'lokasi' => 'Kel. Sulamadaha',
-                            'kecamatan' => 'Ternate Barat',
-                            'jenis' => 'Tak Benda - Ritual/ Tradisi',
-                        ],
-                        [
-                            'nama' => 'Ritual Kololi Kie Mote Ngolo',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Salero',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Tak Benda - Ritual/ Tradisi',
-                        ],
-                        [
-                            'nama' => 'Tradisi Ela-Ela',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kedaton Kesultanan Ternate Kel. Salero',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Tak Benda - Ritual/ Tradisi',
-                        ],
-                        [
-                            'nama' => 'Tradisi Ziarah Jere',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kel. Kulaba',
-                            'kecamatan' => 'Ternate Barat',
-                            'jenis' => 'Tak Benda - Ritual/ Tradisi',
-                        ],
-                        [
-                            'nama' => 'Upacara Joko Kaha',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kedaton Kesultanan Ternate Kel. Salero',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Tak Benda - Ritual/ Tradisi',
-                        ],
-                        [
-                            'nama' => 'Tari Soya-Soya',
-                            'image' => 'soya-soya.jpeg',
-                            'lokasi' => 'Panggung Sunyie Lamo Lapangan Ngara Lamo Kel. Soa-Sio',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Tak Benda - Tarian',
-                        ],
-                        [
-                            'nama' => 'Tari Tide-Tide',
-                            'image' => 'benteng-orange.jpg',
-                            'lokasi' => 'Panggung Pertunjukan Batu Angus Kel. Kulaba',
-                            'kecamatan' => 'Ternate Barat',
-                            'jenis' => 'Tak Benda - Tarian',
-                        ],
-                        [
-                            'nama' => 'Tari Salai Jin',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' => 'Kedaton Kesultanan Ternate Kel. Salero',
-                            'kecamatan' => 'Ternate Utara',
-                            'jenis' => 'Tak Benda - Tarian',
-                        ],
-                        [
-                            'nama' => 'Tari Lalayon',
-                            'image' => 'tari-lenso.jpeg',
-                            'lokasi' => 'Pendopo Benteng Fort Oranje Kel. Gamalama',
-                            'kecamatan' => 'Ternate Tengah',
-                            'jenis' => 'Tak Benda - Tarian',
-                        ],
-                    ];
-                @endphp
-
-                @foreach ($budayas as $key => $item)
+                @forelse ($items as $key => $item)
                     @php
                         $detailUrl = route('warisan-bumi.detail', [
                             'section' => 'budaya',
-                            'slug' => \Illuminate\Support\Str::slug($item['nama']),
+                            'slug' => $item->slug,
                         ]);
                     @endphp
                     <div class="col-md-4 d-flex ftco-animate mb-4">
                         <div class="blog-entry w-100 d-flex flex-column h-100">
                             <a href="{{ $detailUrl }}" class="block-20"
-                                style="background-image: url('{{ asset('frontend/gambar/' . $item['image']) }}');">
+                                style="background-image: url('{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/gambar/benteng.jpg') }}');">
                             </a>
                             <div class="text p-4 d-flex flex-column h-100">
                                 <div>
@@ -291,18 +102,22 @@
                                             <span class="day">{{ $key + 1 }}</span>
                                         </div>
                                         <div class="two">
-                                            {{-- <span class="yr">{{ $item['jenis'] }}</span> --}}
-                                            <span class="mos">{{ $item['kecamatan'] }}</span>
+                                            <span class="mos">{{ $item->kecamatan ?? $item->lokasi }}</span>
                                         </div>
                                     </div>
-                                    <h3 class="heading"><a href="{{ $detailUrl }}">{{ $item['nama'] }}</a></h3>
-                                    <p>{{ $item['lokasi'] }}</p>
+                                    <h3 class="heading"><a href="{{ $detailUrl }}">{{ $item->nama }}</a></h3>
+                                    <p>{{ Str::limit($item->lokasi, 100) }}</p>
                                 </div>
-                                <p class="mt-auto mb-0"><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
+                                <p class="mt-auto mb-0"><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12 text-center text-muted py-5">
+                        Belum ada data warisan budaya.
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

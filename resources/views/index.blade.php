@@ -8,8 +8,8 @@
     @push('styles')
         <style>
             /* =================================
-                               PETA GEOPARK TERNATE
-                            ================================= */
+                                                               PETA GEOPARK TERNATE
+                                                            ================================= */
             .geopark-map-content p {
                 color: #555;
                 line-height: 1.8;
@@ -33,8 +33,8 @@
             }
 
             /* =================================
-                               MOBILE
-                            ================================= */
+                                                               MOBILE
+                                                            ================================= */
             @media (max-width: 767.98px) {
 
                 .geopark-map-content {
@@ -59,9 +59,8 @@
             <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
                 <div class="col-md-7 ftco-animate">
 
-                    <h1 class="mb-4">Jelajahi Warisan Geologi Pulau Rempah</h1>
-                    <p class="caps">Menyusuri jejak vulkanik Gunung Gamalama hingga pesona bahari Kota Ternate, sang
-                        Volcano and Spice Island</p>
+                    <h1 class="mb-4">@yield('hero_title', 'Jelajahi Warisan Bumi Pulau Rempah')</h1>
+                    <p class="caps">@yield('hero_subtitle', 'Menyusuri jejak geologi, hayati, dan budaya Kota Ternate, sang Volcano and Spice Island')</p>
                 </div>
             </div>
         </div>
@@ -272,7 +271,7 @@
 
                     <span class="subheading">Kawasan Geopark Ternate</span>
 
-                    <h2 class="mb-4">Geosite Unggulan</h2>
+                    <h2 class="mb-4">Geosite Terbaru</h2>
 
                 </div>
             </div>
@@ -285,73 +284,33 @@
 
                         <div class="carousel-destination owl-carousel ftco-animate">
 
-                            {{-- 1. Lava Erupsi 1737 Batu Angus --}}
-                            <div class="item">
-                                <div class="project-destination">
+                            @forelse ($geosites as $geosite)
+                                <div class="item">
+                                    <div class="project-destination">
 
-                                    <a href="{{ url('/warisan-bumi') }}" class="img"
-                                        style="background-image: url('{{ asset('frontend/gambar/batu-angus1.png') }}');">
+                                        <a href="{{ route('warisan-bumi.detail', ['section' => $geosite->section, 'slug' => $geosite->slug]) }}"
+                                            class="img"
+                                            style="background-image: url('{{ $geosite->image ? asset('storage/' . $geosite->image) : asset('frontend/gambar/batu-angus1.png') }}');">
 
-                                        <div class="text">
-                                            <h3>Lava Erupsi 1737 Batu Angus</h3>
-                                            <span>Kulaba, Ternate Barat</span>
-                                        </div>
+                                            <div class="text">
+                                                <h3>{{ $geosite->nama }}</h3>
+                                                <span>{{ Str::limit($geosite->lokasi, 40) }}</span>
+                                            </div>
 
-                                    </a>
+                                        </a>
 
+                                    </div>
                                 </div>
-                            </div>
-
-                            {{-- 2. Maar Tolire --}}
-                            <div class="item">
-                                <div class="project-destination">
-
-                                    <a href="{{ url('/warisan-bumi') }}" class="img"
-                                        style="background-image: url('{{ asset('frontend/gambar/tolire1.jpg') }}');">
-
-                                        <div class="text">
-                                            <h3>Maar Tolire</h3>
-                                            <span>Takome, Ternate Barat</span>
+                            @empty
+                                <div class="item">
+                                    <div class="project-destination">
+                                        <div class="img d-flex align-items-center justify-content-center"
+                                            style="background-color:#eee; min-height:250px;">
+                                            <span class="text-muted">Belum ada data geosite.</span>
                                         </div>
-
-                                    </a>
-
+                                    </div>
                                 </div>
-                            </div>
-
-                            {{-- 3. Lava Pahoehoe Sulamadaha --}}
-                            <div class="item">
-                                <div class="project-destination">
-
-                                    <a href="{{ url('/warisan-bumi') }}" class="img"
-                                        style="background-image: url('{{ asset('frontend/gambar/sulamadaha.jpg') }}');">
-
-                                        <div class="text">
-                                            <h3>Lava Pahoehoe Sulamadaha</h3>
-                                            <span>Sulamadaha, Ternate Barat</span>
-                                        </div>
-
-                                    </a>
-
-                                </div>
-                            </div>
-
-                            {{-- 4. Maar Ngade --}}
-                            <div class="item">
-                                <div class="project-destination">
-
-                                    <a href="{{ url('/warisan-bumi') }}" class="img"
-                                        style="background-image: url('{{ asset('frontend/gambar/ngade.jpg') }}');">
-
-                                        <div class="text">
-                                            <h3>Maar Ngade</h3>
-                                            <span>Ngade, Ternate Selatan</span>
-                                        </div>
-
-                                    </a>
-
-                                </div>
-                            </div>
+                            @endforelse
 
                         </div>
 
@@ -364,7 +323,7 @@
 
                     <div class="col-md-12 text-center">
 
-                        <a href="{{ url('/warisan-bumi') }}" class="btn btn-primary py-3 px-4">
+                        <a href="{{ url('/warisan-bumi/geologi') }}" class="btn btn-primary py-3 px-4">
                             Selengkapnya
                         </a>
 
@@ -426,73 +385,42 @@
                 </div>
             </div>
             <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('frontend/images/image_1.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
+
+                @forelse ($beritas as $berita)
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry justify-content-end">
+                            <a href="{{ url('/berita/' . $berita->slug) }}" class="block-20"
+                                style="background-image: url('{{ $berita->gambar ? asset('storage/' . $berita->gambar) : asset('frontend/images/image_1.jpg') }}');">
+                            </a>
+                            <div class="text">
+                                <div class="d-flex align-items-center mb-4 topp">
+                                    <div class="one">
+                                        <span class="day">{{ $berita->diterbitkan_pada->format('d') }}</span>
+                                    </div>
+                                    <div class="two">
+                                        <span class="yr">{{ $berita->diterbitkan_pada->format('Y') }}</span>
+                                        <span class="mos">{{ $berita->diterbitkan_pada->translatedFormat('F') }}</span>
+                                    </div>
                                 </div>
-                                <div class="two">
-                                    <span class="yr">2026</span>
-                                    <span class="mos">Agustus</span>
-                                </div>
+                                <h3 class="heading">
+                                    <a href="{{ url('/berita/' . $berita->slug) }}">{{ $berita->judul }}</a>
+                                </h3>
+                                <p><a href="{{ url('/berita/' . $berita->slug) }}" class="btn btn-primary">Baca
+                                        selengkapnya</a></p>
                             </div>
-                            <h3 class="heading"><a href="#">Menuju UNESCO Global Geopark, Ini Progres 19 Geosite
-                                    Ternate</a></h3>
-                            <p><a href="#" class="btn btn-primary">Baca selengkapnya</a></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('frontend/images/image_2.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
-                                </div>
-                                <div class="two">
-                                    <span class="yr">2026</span>
-                                    <span class="mos">Agustus</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Mengenal Legenda dan Geologi Maar Tolire</a></h3>
-                            <p><a href="#" class="btn btn-primary">Baca selengkapnya</a></p>
-                        </div>
+                @empty
+                    <div class="col-md-12 text-center text-muted">
+                        Belum ada berita yang diterbitkan.
                     </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry">
-                        <a href="blog-single.html" class="block-20"
-                            style="background-image: url('{{ asset('frontend/images/image_3.jpg') }}');">
-                        </a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one">
-                                    <span class="day">11</span>
-                                </div>
-                                <div class="two">
-                                    <span class="yr">2026</span>
-                                    <span class="mos">Agustus</span>
-                                </div>
-                            </div>
-                            <h3 class="heading"><a href="#">Volcano and Spice Island: Identitas Baru Kota
-                                    Ternate</a></h3>
-                            <p><a href="#" class="btn btn-primary">Baca selengkapnya</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
+
             </div>
         </div>
     </section>
 
-    <section class="ftco-intro ftco-section ftco-no-pt">
+    {{-- <section class="ftco-intro ftco-section ftco-no-pt">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
@@ -507,7 +435,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 @endsection
 

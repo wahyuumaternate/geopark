@@ -1,13 +1,13 @@
-@extends('admin.layouts.main', ['title' => 'Warisan ' . $title])
+@extends('admin.layouts.main', ['title' => $title])
 
 @section('main')
     <section class="section">
         <div class="pagetitle">
-            <h1>Warisan {{ $title }}</h1>
+            <h1>{{ $title }}</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Warisan {{ $title }}</li>
+                    <li class="breadcrumb-item active">{{ $title }}</li>
                 </ol>
             </nav>
         </div>
@@ -25,24 +25,24 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
-                                <h5 class="card-title mb-1">Daftar Warisan {{ $title }}</h5>
-                                <p class="text-muted small mb-0">Kelola data Warisan {{ $title }} untuk situs Geopark
+                                <h5 class="card-title mb-1">Daftar {{ $title }}</h5>
+                                <p class="text-muted small mb-0">Kelola data {{ $title }} untuk situs Geopark
                                     Ternate.</p>
                             </div>
-                            <a href="{{ route('admin.warisanbumi.create', $section) }}" class="btn btn-info text-white">
+                            <a href="{{ route('admin.informasi.create', $kategori) }}" class="btn btn-info text-white">
                                 <i class="bi bi-plus-circle me-1"></i>Tambah Data
                             </a>
                         </div>
 
                         <div class="table-responsive">
-                            <table id="warisanBumiTable" class="table table-striped table-hover align-middle">
+                            <table id="informasiTable" class="table table-striped table-hover align-middle">
                                 <thead class="table-light">
                                     <tr>
                                         <th class="text-center" style="width:50px;">#</th>
                                         <th style="width:90px;">Gambar</th>
-                                        <th>Nama</th>
-                                        <th>Jenis</th>
-                                        <th>Lokasi</th>
+                                        <th>Judul</th>
+                                        <th>Status</th>
+                                        <th>Tanggal Terbit</th>
                                         <th class="text-center" style="width:120px;">Aksi</th>
                                     </tr>
                                 </thead>
@@ -51,9 +51,9 @@
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>
-                                                @if ($item->image)
-                                                    <img src="{{ asset('storage/' . $item->image) }}"
-                                                        alt="{{ $item->nama }}" class="rounded shadow-sm"
+                                                @if ($item->gambar)
+                                                    <img src="{{ asset('storage/' . $item->gambar) }}"
+                                                        alt="{{ $item->judul }}" class="rounded shadow-sm"
                                                         style="width: 60px; height: 60px; object-fit: cover;">
                                                 @else
                                                     <div class="d-flex align-items-center justify-content-center bg-light rounded"
@@ -62,36 +62,35 @@
                                                     </div>
                                                 @endif
                                             </td>
-                                            <td class="fw-semibold">{{ $item->nama }}</td>
+                                            <td class="fw-semibold">
+                                                {{ $item->judul }}
+                                                <div class="text-muted small">{{ Str::limit($item->ringkasan, 60) }}</div>
+                                            </td>
                                             <td>
-                                                @if ($item->jenis)
-                                                    <span
-                                                        class="badge bg-primary bg-opacity-10 text-primary border border-primary">
-                                                        {{ $item->jenis }}
-                                                    </span>
+                                                @if ($item->status)
+                                                    <span class="badge bg-success">Terbit</span>
                                                 @else
-                                                    <span class="text-muted">-</span>
+                                                    <span class="badge bg-secondary">Draft</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <i class="bi bi-geo-alt text-danger me-1"></i>
-                                                {{ Str::limit($item->lokasi, 50) }}
+                                                {{ $item->diterbitkan_pada ? $item->diterbitkan_pada->format('d M Y') : '-' }}
                                             </td>
                                             <td class="text-center">
                                                 <div class="d-flex justify-content-center gap-1">
-                                                    <a href="{{ route('admin.warisanbumi.edit', $item) }}"
+                                                    <a href="{{ route('admin.informasi.edit', $item) }}"
                                                         class="btn btn-sm btn-outline-primary" title="Edit">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
                                                     <button type="button" class="btn btn-sm btn-outline-danger"
                                                         title="Hapus"
-                                                        onclick="confirmDelete({{ $item->id }}, '{{ addslashes($item->nama) }}')">
+                                                        onclick="confirmDelete({{ $item->id }}, '{{ addslashes($item->judul) }}')">
                                                         <i class="bi bi-trash3"></i>
                                                     </button>
                                                 </div>
                                                 <form id="delete-form-{{ $item->id }}"
-                                                    action="{{ route('admin.warisanbumi.destroy', $item) }}"
-                                                    method="POST" class="d-none">
+                                                    action="{{ route('admin.informasi.destroy', $item) }}" method="POST"
+                                                    class="d-none">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -101,7 +100,7 @@
                                         <tr>
                                             <td colspan="6" class="text-center text-muted py-5">
                                                 <i class="bi bi-inbox fs-1 d-block mb-2"></i>
-                                                Belum ada data warisan {{ strtolower($title) }}.
+                                                Belum ada data {{ strtolower($title) }}.
                                             </td>
                                         </tr>
                                     @endforelse
@@ -118,11 +117,11 @@
 @section('styles')
     <link href="{{ asset('admin/vendor/datatables/datatables.min.css') }}" rel="stylesheet">
     <style>
-        #warisanBumiTable img {
+        #informasiTable img {
             transition: transform .2s ease;
         }
 
-        #warisanBumiTable img:hover {
+        #informasiTable img:hover {
             transform: scale(1.6);
             position: relative;
             z-index: 5;
@@ -138,13 +137,13 @@
     <script src="{{ asset('admin/vendor/datatables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#warisanBumiTable').DataTable({
+            $('#informasiTable').DataTable({
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/id.json"
                 },
                 pageLength: 10,
                 order: [
-                    [0, "asc"]
+                    [4, "desc"]
                 ],
                 columnDefs: [{
                     orderable: false,
@@ -153,11 +152,11 @@
             });
         });
 
-        function confirmDelete(id, nama) {
+        function confirmDelete(id, judul) {
             if (typeof Swal !== 'undefined') {
                 Swal.fire({
                     title: 'Hapus data?',
-                    text: 'Data "' + nama + '" akan dihapus permanen dan tidak dapat dikembalikan.',
+                    text: 'Data "' + judul + '" akan dihapus permanen dan tidak dapat dikembalikan.',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#dc3545',
@@ -170,7 +169,7 @@
                     }
                 });
             } else {
-                if (confirm('Yakin ingin menghapus data "' + nama + '"?')) {
+                if (confirm('Yakin ingin menghapus data "' + judul + '"?')) {
                     document.getElementById('delete-form-' + id).submit();
                 }
             }

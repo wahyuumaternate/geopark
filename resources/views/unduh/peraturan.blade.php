@@ -33,20 +33,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Peraturan Wali Kota tentang Pembentukan Badan Pengelola Geopark Ternate</td>
-                                <td>2026</td>
-                                <td class="text-center"><a href="#" class="btn btn-sm btn-primary">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Peraturan Daerah tentang Perlindungan Kawasan Geopark Ternate</td>
-                                <td>2025</td>
-                                <td class="text-center"><a href="#" class="btn btn-sm btn-primary">Unduh</a></td>
-                            </tr>
+                            @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration + ($items->currentPage() - 1) * $items->perPage() }}</td>
+                                    <td>{{ $item->judul }}</td>
+                                    <td>{{ $item->diterbitkan_pada?->format('Y') ?? '-' }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ asset('storage/' . $item->file) }}" target="_blank" class="btn btn-sm btn-primary">Unduh</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Belum ada data peraturan.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
+
+                    <div class="d-flex justify-content-center">
+                        {{ $items->links() }}
+                    </div>
                 </div>
             </div>
         </div>

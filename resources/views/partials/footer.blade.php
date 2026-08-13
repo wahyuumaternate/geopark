@@ -1,5 +1,4 @@
-<footer class="ftco-footer bg-bottom ftco-no-pt"
-    style="background-image: url('{{ asset('frontend/gambar/bg2.png') }}');">
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url('{{ asset('frontend/gambar/bg2.png') }}');">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md pt-5">
@@ -19,10 +18,10 @@
                     <h2 class="ftco-heading-2">Informasi</h2>
                     <ul class="list-unstyled">
                         <li><a href="{{ url('/tentang-kami') }}" class="py-2 d-block">Tentang Kami</a></li>
-                        <li><a href="{{ url('/warisan-bumi') }}" class="py-2 d-block">Warisan Bumi</a></li>
+                        {{-- <li><a href="{{ url('/warisan-bumi') }}" class="py-2 d-block">Warisan Bumi</a></li> --}}
                         <li><a href="{{ url('/coe') }}" class="py-2 d-block">COE</a></li>
                         <li><a href="{{ url('/mitra-geopark') }}" class="py-2 d-block">Mitra Geopark</a></li>
-                        <li><a href="{{ url('/unduh') }}" class="py-2 d-block">Unduh</a></li>
+                        {{-- <li><a href="{{ url('/unduh') }}" class="py-2 d-block">Unduh</a></li> --}}
                         <li><a href="{{ url('/berita-dan-informasi') }}" class="py-2 d-block">Hubungi Kami</a>
                         </li>
                     </ul>
@@ -32,9 +31,9 @@
                 <div class="ftco-footer-widget pt-md-5 mb-4">
                     <h2 class="ftco-heading-2">Pengalaman</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Pendakian Gamalama</a></li>
+                        {{-- <li><a href="#" class="py-2 d-block">Pendakian Gamalama</a></li> --}}
                         <li><a href="#" class="py-2 d-block">Geowisata Batu Angus</a></li>
-                        <li><a href="#" class="py-2 d-block">Pantai & Bahari</a></li>
+                        {{-- <li><a href="#" class="py-2 d-block">Pantai & Bahari</a></li> --}}
                         <li><a href="#" class="py-2 d-block">Danau Vulkanik</a></li>
                         <li><a href="#" class="py-2 d-block">Wisata Budaya</a></li>
                         <li><a href="#" class="py-2 d-block">Kuliner Rempah</a></li>

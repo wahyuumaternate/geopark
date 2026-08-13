@@ -19,47 +19,29 @@
             </div>
 
             <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end w-100">
-                        <a href="#" class="block-20" style="background-image: url('{{ asset('frontend/gambar/batu-angus1.png') }}');"></a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one"><span class="day">10</span></div>
-                                <div class="two"><span class="yr">2026</span><span class="mos">Agustus</span></div>
+                @forelse ($items as $item)
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry justify-content-end w-100">
+                            <a href="{{ route('informasi.show', $item) }}" class="block-20"
+                                style="background-image: url('{{ $item->gambar ? asset('storage/' . $item->gambar) : asset('frontend/gambar/gamalama.jpeg') }}');"></a>
+                            <div class="text">
+                                <div class="d-flex align-items-center mb-4 topp">
+                                    <div class="one"><span class="day">{{ $item->diterbitkan_pada->format('d') }}</span></div>
+                                    <div class="two">
+                                        <span class="yr">{{ $item->diterbitkan_pada->format('Y') }}</span>
+                                        <span class="mos">{{ $item->diterbitkan_pada->translatedFormat('F') }}</span>
+                                    </div>
+                                </div>
+                                <h3 class="heading"><a href="{{ route('informasi.show', $item) }}">{{ $item->judul }}</a></h3>
+                                <p><a href="{{ route('informasi.show', $item) }}" class="btn btn-primary">Baca selengkapnya</a></p>
                             </div>
-                            <h3 class="heading"><a href="{{ url('/detail') }}">Pelatihan pemandu lokal untuk geowisata Ternate</a></h3>
-                            <p><a href="{{ url('/detail') }}" class="btn btn-primary">Baca selengkapnya</a></p>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry justify-content-end w-100">
-                        <a href="#" class="block-20" style="background-image: url('{{ asset('frontend/gambar/peta-geopark.png') }}');"></a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one"><span class="day">05</span></div>
-                                <div class="two"><span class="yr">2026</span><span class="mos">Agustus</span></div>
-                            </div>
-                            <h3 class="heading"><a href="{{ url('/detail') }}">Geopark Ternate maju di proses UNESCO Global Geopark</a></h3>
-                            <p><a href="{{ url('/detail') }}" class="btn btn-primary">Baca selengkapnya</a></p>
-                        </div>
+                @empty
+                    <div class="col-12 text-center text-muted py-5">
+                        Belum ada berita yang diterbitkan.
                     </div>
-                </div>
-
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry w-100">
-                        <a href="#" class="block-20" style="background-image: url('{{ asset('frontend/gambar/soya-soya.jpeg') }}');"></a>
-                        <div class="text">
-                            <div class="d-flex align-items-center mb-4 topp">
-                                <div class="one"><span class="day">28</span></div>
-                                <div class="two"><span class="yr">2026</span><span class="mos">Juli</span></div>
-                            </div>
-                            <h3 class="heading"><a href="{{ url('/detail') }}">Komunitas pemuda Ternate gelar aksi bersih pantai</a></h3>
-                            <p><a href="{{ url('/detail') }}" class="btn btn-primary">Baca selengkapnya</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>

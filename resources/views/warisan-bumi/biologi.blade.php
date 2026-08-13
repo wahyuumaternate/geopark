@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Warisan Biologi | Geopark Ternate')
-@section('meta_description', 'Keanekaragaman hayati Geopark Ternate: flora dan fauna endemik yang hidup di lereng Gunung
+@section('meta_description',
+    'Keanekaragaman hayati Geopark Ternate: flora dan fauna endemik yang hidup di lereng Gunung
     Gamalama hingga kawasan pesisirnya.')
 
 @section('page_bg', 'frontend/gambar/kuso.jpeg')
@@ -31,7 +32,7 @@
 
                 <div class="col-md-6 d-flex align-items-stretch ftco-animate">
                     <div class="img d-flex w-100 align-items-center justify-content-center"
-                        style="background-image:url('{{ asset('frontend/gambar/soya-soya.jpeg') }}');">
+                        style="background-image:url('{{ asset('frontend/gambar/kuso.jpeg') }}');">
                     </div>
                 </div>
 
@@ -110,65 +111,17 @@
             </div>
 
             <div class="row d-flex">
-                @php
-                    $biologis = [
-                        [
-                            'nama' => 'Kuskus Matabiru (Phalanger matabiru)',
-                            'image' => 'kuso.jpeg',
-                            'lokasi' =>
-                                'Kel. Takome (Ekowisata Pulo Tareba, sisi barat Danau Tolire); juga tercatat di Kulaba & Kelurahan Sasa',
-                            'kecamatan' => 'Ternate Barat; Ternate Selatan',
-                        ],
-                        [
-                            'nama' => 'Burung Kasturi/Nuri Ternate (Lorius garrulus)',
-                            'image' => 'burung-nuri.png',
-                            'lokasi' =>
-                                'Kel. Takome Kawasan Danau Tolire (hutan primer/sekunder ke arah barat) dan sekitar Ngade',
-                            'kecamatan' => 'Ternate Barat; Ternate Selatan',
-                        ],
-                        [
-                            'nama' => 'Cengkeh (Syzygium aromaticum L)',
-                            'image' => 'bg2.jpeg',
-                            'lokasi' =>
-                                'Kel. Marikurubu (Dusun/Lingkungan Tongole, kompleks Air Tege-tege) — lokasi cengkeh Afo, cengkeh tertua di dunia; juga tersebar luas di kebun-kebun lereng Gamalama',
-                            'kecamatan' =>
-                                'Ternate Tengah (cengkeh Afo); tersebar juga di Ternate Pulau, Ternate Barat',
-                        ],
-                        [
-                            'nama' => 'Pala (Myristica fragrans)',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' =>
-                                'Kel. Marikurubu dan Kel. Foramadiahi (kebun pala-cengkeh di lereng selatan Gamalama)',
-                            'kecamatan' => 'Ternate Tengah; Ternate Pulau',
-                        ],
-                        [
-                            'nama' => 'Bunga Telang (Clitoria ternatea)',
-                            'image' => 'soya-soya.jpeg',
-                            'lokasi' =>
-                                'Tumbuh tersebar (liar/budidaya pekarangan) di berbagai kelurahan — tidak ada sentra lokasi spesifik tercatat',
-                            'kecamatan' => 'Tersebar di seluruh kecamatan Kota Ternate',
-                        ],
-                        [
-                            'nama' => 'Tanaman Patah Tulang (Euphorbia tirucalli)',
-                            'image' => 'peta-geopark.jpg',
-                            'lokasi' =>
-                                'Kel. Kulaba (Batu Angus) merupakan tanaman asli dan endemik Pulau Ternate. Tanaman ini mudah ditemukan tumbuh liar atau merambat di pekarangan rumah, pagar, pinggiran hutan, dan dekat tepi kali mati di seluruh wilayah Ternate',
-                            'kecamatan' => 'Tersebar di seluruh kecamatan Kota Ternate',
-                        ],
-                    ];
-                @endphp
-
-                @foreach ($biologis as $key => $item)
+                @forelse ($items as $key => $item)
                     @php
                         $detailUrl = route('warisan-bumi.detail', [
                             'section' => 'biologi',
-                            'slug' => \Illuminate\Support\Str::slug($item['nama']),
+                            'slug' => $item->slug,
                         ]);
                     @endphp
                     <div class="col-md-4 d-flex ftco-animate mb-4">
                         <div class="blog-entry w-100 d-flex flex-column h-100">
                             <a href="{{ $detailUrl }}" class="block-20"
-                                style="background-image: url('{{ asset('frontend/gambar/' . $item['image']) }}');">
+                                style="background-image: url('{{ $item->image ? asset('storage/' . $item->image) : asset('frontend/gambar/kuso.jpeg') }}');">
                             </a>
                             <div class="text p-4 d-flex flex-column h-100">
                                 <div>
@@ -177,18 +130,23 @@
                                             <span class="day">{{ $key + 1 }}</span>
                                         </div>
                                         <div class="two">
-                                            <span class="yr">Biologi</span>
-                                            <span class="mos">{{ $item['kecamatan'] }}</span>
+                                            <span class="yr">{{ $item->jenis ?? 'Biologi' }}</span>
+                                            <span class="mos">{{ $item->kecamatan ?? '-' }}</span>
                                         </div>
                                     </div>
-                                    <h3 class="heading"><a href="{{ $detailUrl }}">{{ $item['nama'] }}</a></h3>
-                                    <p>{{ $item['lokasi'] }}</p>
+                                    <h3 class="heading"><a href="{{ $detailUrl }}">{{ $item->nama }}</a></h3>
+                                    <p>{{ Str::limit($item->lokasi, 120) }}</p>
                                 </div>
-                                <p class="mt-auto mb-0"><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a></p>
+                                <p class="mt-auto mb-0"><a href="{{ $detailUrl }}" class="btn btn-primary">Read more</a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12 text-center text-muted py-5">
+                        Belum ada data warisan biologi.
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

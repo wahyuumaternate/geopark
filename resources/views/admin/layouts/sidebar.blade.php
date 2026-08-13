@@ -4,7 +4,7 @@
 
         <!-- Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link {{ request()->routeIs('dashboard') ? '' : 'collapsed' }}" href="{{ route('dashboard') }}">
                 <i class="bi bi-speedometer2"></i>
                 <span>Dashboard</span>
             </a>
@@ -12,30 +12,37 @@
 
         <!-- Warisan Bumi -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#warisan-nav" data-bs-toggle="collapse" href="#!">
+            <a class="nav-link {{ request()->routeIs('admin.geologi.*', 'admin.biologi.*', 'admin.hayati.*', 'admin.warisanbumi.*') ? '' : 'collapsed' }}"
+                data-bs-target="#warisan-nav" data-bs-toggle="collapse" href="#!"
+                aria-expanded="{{ request()->routeIs('admin.geologi.*', 'admin.biologi.*', 'admin.hayati.*', 'admin.warisanbumi.*') ? 'true' : 'false' }}">
                 <i class="bi bi-geo-alt-fill"></i>
                 <span>Warisan Bumi</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
 
-            <ul id="warisan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <ul id="warisan-nav"
+                class="nav-content collapse {{ request()->routeIs('admin.geologi.*', 'admin.biologi.*', 'admin.hayati.*', 'admin.warisanbumi.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
 
                 <li>
-                    <a href="{{ route('admin.geologi.index') }}">
+                    <a href="{{ route('admin.geologi.index') }}"
+                        class="{{ request()->routeIs('admin.geologi.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Geologi</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/warisan-bumi/biologi') }}">
+                    <a href="{{ route('admin.biologi.index') }}"
+                        class="{{ request()->routeIs('admin.biologi.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
-                        <span>Biologi</span>
+                        <span>Hayati</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/warisan-bumi/budaya') }}">
+                    <a href="{{ route('admin.hayati.index') }}"
+                        class="{{ request()->routeIs('admin.hayati.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Budaya</span>
                     </a>
@@ -46,30 +53,36 @@
 
         <!-- Informasi -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#info-nav" data-bs-toggle="collapse" href="#!">
+            <a class="nav-link {{ request()->routeIs('admin.berita.*', 'admin.youthforum.*', 'admin.informasi.*') ? '' : 'collapsed' }}"
+                data-bs-target="#info-nav" data-bs-toggle="collapse" href="#!"
+                aria-expanded="{{ request()->routeIs('admin.berita.*', 'admin.youthforum.*', 'admin.informasi.*') ? 'true' : 'false' }}">
                 <i class="bi bi-newspaper"></i>
                 <span>Informasi</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
 
-            <ul id="info-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <ul id="info-nav"
+                class="nav-content collapse {{ request()->routeIs('admin.berita.*', 'admin.youthforum.*', 'admin.informasi.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
 
                 <li>
-                    <a href="{{ url('/berita') }}">
+                    <a href="{{ route('admin.berita.index') }}"
+                        class="{{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Berita</span>
                     </a>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="{{ url('/events') }}">
                         <i class="bi bi-circle"></i>
                         <span>Events</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li>
-                    <a href="{{ url('/youth-forum') }}">
+                    <a href="{{ route('admin.youthforum.index') }}"
+                        class="{{ request()->routeIs('admin.youthforum.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Youth Forum</span>
                     </a>
@@ -78,25 +91,31 @@
             </ul>
         </li>
 
-        <!-- Publikasi -->
+        <!-- Unduh -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#unduh-nav" data-bs-toggle="collapse" href="#!">
+            <a class="nav-link {{ request()->routeIs('admin.publikasi.*', 'admin.peraturan.*', 'admin.unduh.*') ? '' : 'collapsed' }}"
+                data-bs-target="#unduh-nav" data-bs-toggle="collapse" href="#!"
+                aria-expanded="{{ request()->routeIs('admin.publikasi.*', 'admin.peraturan.*', 'admin.unduh.*') ? 'true' : 'false' }}">
                 <i class="bi bi-download"></i>
                 <span>Unduh</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
 
-            <ul id="unduh-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <ul id="unduh-nav"
+                class="nav-content collapse {{ request()->routeIs('admin.publikasi.*', 'admin.peraturan.*', 'admin.unduh.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
 
                 <li>
-                    <a href="{{ url('/unduh/publikasi') }}">
+                    <a href="{{ route('admin.publikasi.index') }}"
+                        class="{{ request()->routeIs('admin.publikasi.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Publikasi</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/unduh/peraturan') }}">
+                    <a href="{{ route('admin.peraturan.index') }}"
+                        class="{{ request()->routeIs('admin.peraturan.*') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Peraturan</span>
                     </a>
@@ -106,14 +125,15 @@
         </li>
 
         <!-- Lainnya -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ url('/mitra-geopark') }}">
+        {{-- <li class="nav-item">
+            <a class="nav-link {{ request()->is('mitra-geopark') ? '' : 'collapsed' }}"
+                href="{{ url('/mitra-geopark') }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Mitra Geopark</span>
             </a>
-        </li>
+        </li> --}}
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link collapsed" href="{{ url('/coe') }}">
                 <i class="bi bi-building"></i>
                 <span>COE</span>
@@ -125,7 +145,7 @@
                 <i class="bi bi-gear"></i>
                 <span>Pengaturan</span>
             </a>
-        </li>
+        </li> --}}
 
     </ul>
 

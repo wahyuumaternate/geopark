@@ -48,8 +48,8 @@
 
                 {{-- Warisan Bumi --}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="{{ url('/warisan-bumi') }}" id="warisanDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="#" id="warisanDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Warisan Bumi
                     </a>
 
@@ -76,11 +76,11 @@
                 </li>
 
                 {{-- Events --}}
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ url('/events') }}" class="nav-link">
                         Events
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Unduh --}}
                 <li class="nav-item dropdown">
@@ -90,9 +90,6 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="unduhDropdown">
-                        {{-- <a class="dropdown-item" href="{{ url('/unduh') }}">
-                            Dokumen
-                        </a> --}}
 
                         <a class="dropdown-item" href="{{ url('/unduh/publikasi') }}">
                             Publikasi
@@ -104,7 +101,18 @@
                     </div>
                 </li>
 
-                {{-- Youth Forum --}}
+                {{-- Mitra Geopark --}}
+                <li class="nav-item">
+                    <a href="{{ url('/mitra-geopark') }}" class="nav-link">
+                        Mitra Geopark
+                    </a>
+                </li>
+                {{-- Mitra Geopark --}}
+                <li class="nav-item">
+                    <a href="{{ url('/coe') }}" class="nav-link">
+                        COE
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ url('/youth-forum') }}" class="nav-link">
                         Youth Forum
