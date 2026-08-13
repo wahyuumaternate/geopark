@@ -1,0 +1,648 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200"
+     height="1650"
+     viewBox="0 0 1200 1650">
+
+    <defs>
+
+        <style>
+            .box {
+                fill: #17A2B8;
+                stroke: #168da0;
+                stroke-width: 2;
+            }
+
+            .box-title {
+                fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 25px;
+                font-weight: 700;
+                text-anchor: middle;
+            }
+
+            .box-text {
+                fill: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .line {
+                stroke: #222222;
+                stroke-width: 4;
+                fill: none;
+            }
+
+            .bullet {
+                fill: #ffffff;
+            }
+        </style>
+
+        <marker id="arrowhead"
+                markerWidth="12"
+                markerHeight="12"
+                refX="10"
+                refY="6"
+                orient="auto">
+
+            <polygon points="0 0, 12 6, 0 12"
+                     fill="#222222"/>
+
+        </marker>
+
+    </defs>
+
+
+    <!-- ========================================================= -->
+    <!-- DEWAN PENASEHAT -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="40"
+          width="420"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="112"
+          class="box-title">
+        DEWAN PENASEHAT
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- DEWAN PENASEHAT -> KETUA -->
+    <!-- ========================================================= -->
+
+    <line x1="600"
+          y1="160"
+          x2="600"
+          y2="220"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA BADAN PENGELOLA -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="225"
+          width="420"
+          height="135"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="282"
+          class="box-title">
+        KETUA
+    </text>
+
+    <text x="600"
+          y="317"
+          class="box-title">
+        BADAN PENGELOLA
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA -> SEKRETARIS -->
+    <!-- ========================================================= -->
+
+    <path d="M 600 360
+             L 600 405
+             L 190 405
+             L 190 455"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA -> KETUA HARIAN -->
+    <!-- ========================================================= -->
+
+    <line x1="600"
+          y1="360"
+          x2="600"
+          y2="455"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- SEKRETARIS -->
+    <!-- ========================================================= -->
+
+    <rect x="25"
+          y="460"
+          width="330"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="190"
+          y="532"
+          class="box-title">
+        SEKRETARIS
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA HARIAN -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="460"
+          width="420"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="532"
+          class="box-title">
+        KETUA HARIAN
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- KONEKTOR KE 3 BAGIAN -->
+    <!-- ========================================================= -->
+
+    <!-- Garis turun dari Ketua Harian -->
+    <line x1="600"
+          y1="580"
+          x2="600"
+          y2="630"
+          class="line"/>
+
+
+    <!-- Garis horizontal utama -->
+    <line x1="190"
+          y1="630"
+          x2="1010"
+          y2="630"
+          class="line"/>
+
+
+    <!-- ========================================================= -->
+    <!-- KOMISI TEKNIS CONNECTOR -->
+    <!-- ========================================================= -->
+
+    <line x1="190"
+          y1="630"
+          x2="190"
+          y2="675"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- TENAGA AHLI CONNECTOR -->
+    <!-- ========================================================= -->
+
+    <line x1="600"
+          y1="630"
+          x2="600"
+          y2="675"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- DIVISI CONNECTOR -->
+    <!-- ========================================================= -->
+
+    <line x1="1010"
+          y1="630"
+          x2="1010"
+          y2="675"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- KOMISI TEKNIS -->
+    <!-- ========================================================= -->
+
+    <rect x="25"
+          y="680"
+          width="330"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="190"
+          y="752"
+          class="box-title">
+        KOMISI TEKNIS
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- TENAGA AHLI -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="680"
+          width="420"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="752"
+          class="box-title">
+        TENAGA AHLI
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- DIVISI -->
+    <!-- ========================================================= -->
+
+    <rect x="845"
+          y="680"
+          width="330"
+          height="120"
+          rx="35"
+          class="box"/>
+
+    <text x="1010"
+          y="752"
+          class="box-title">
+        DIVISI
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- DETAIL KOMISI TEKNIS -->
+    <!-- ========================================================= -->
+
+    <rect x="25"
+          y="830"
+          width="330"
+          height="370"
+          rx="28"
+          class="box"/>
+
+
+    <circle cx="55"
+            cy="875"
+            r="5"
+            class="bullet"/>
+
+    <text x="75"
+          y="883"
+          class="box-text">
+        Penelitian dan
+    </text>
+
+    <text x="75"
+          y="912"
+          class="box-text">
+        Pengembangan
+    </text>
+
+
+    <circle cx="55"
+            cy="955"
+            r="5"
+            class="bullet"/>
+
+    <text x="75"
+          y="963"
+          class="box-text">
+        Konservasi
+    </text>
+
+
+    <circle cx="55"
+            cy="1005"
+            r="5"
+            class="bullet"/>
+
+    <text x="75"
+          y="1013"
+          class="box-text">
+        Pendidikan
+    </text>
+
+
+    <circle cx="55"
+            cy="1055"
+            r="5"
+            class="bullet"/>
+
+    <text x="75"
+          y="1063"
+          class="box-text">
+        Promosi dan Event
+    </text>
+
+
+    <circle cx="55"
+            cy="1105"
+            r="5"
+            class="bullet"/>
+
+    <text x="75"
+          y="1113"
+          class="box-text">
+        Pemberdayaan
+    </text>
+
+    <text x="75"
+          y="1142"
+          class="box-text">
+        Masyarakat
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- DIVISI DETAIL -->
+    <!-- ========================================================= -->
+
+    <rect x="845"
+          y="830"
+          width="330"
+          height="430"
+          rx="28"
+          class="box"/>
+
+
+    <circle cx="875"
+            cy="875"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="883"
+          class="box-text">
+        Perencanaan
+    </text>
+
+
+    <circle cx="875"
+            cy="925"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="933"
+          class="box-text">
+        Pengembangan
+    </text>
+
+    <text x="895"
+          y="962"
+          class="box-text">
+        Geosite
+    </text>
+
+
+    <circle cx="875"
+            cy="1005"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="1013"
+          class="box-text">
+        Konservasi
+    </text>
+
+
+    <circle cx="875"
+            cy="1055"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="1063"
+          class="box-text">
+        Pemberdayaan dan
+    </text>
+
+    <text x="895"
+          y="1092"
+          class="box-text">
+        Pendidikan
+    </text>
+
+    <text x="895"
+          y="1121"
+          class="box-text">
+        Masyarakat
+    </text>
+
+
+    <circle cx="875"
+            cy="1165"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="1173"
+          class="box-text">
+        Pengembangan
+    </text>
+
+    <text x="895"
+          y="1202"
+          class="box-text">
+        Produk
+    </text>
+
+
+    <circle cx="875"
+            cy="1240"
+            r="5"
+            class="bullet"/>
+
+    <text x="895"
+          y="1248"
+          class="box-text">
+        Promosi dan Event
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- JALUR TENAGA AHLI -> KETUA BADAN PENGELOLA KAWASAN -->
+    <!-- ========================================================= -->
+
+    <!--
+        Jalur dimulai dari bawah kotak Tenaga Ahli.
+        Tidak melewati kotak.
+    -->
+
+  <!-- ========================================================= -->
+<!-- KONEKTOR KOMISI TEKNIS / TENAGA AHLI / DIVISI -->
+<!-- ========================================================= -->
+
+<!-- Garis turun dari Ketua Harian -->
+<line x1="600"
+      y1="580"
+      x2="600"
+      y2="630"
+      class="line"/>
+
+<!-- Garis horizontal utama -->
+<line x1="190"
+      y1="630"
+      x2="1010"
+      y2="630"
+      class="line"/>
+
+<!-- Komisi Teknis -->
+<line x1="190"
+      y1="630"
+      x2="190"
+      y2="675"
+      class="line"
+      marker-end="url(#arrowhead)"/>
+
+<!-- Tenaga Ahli -->
+<line x1="600"
+      y1="630"
+      x2="600"
+      y2="675"
+      class="line"
+      marker-end="url(#arrowhead)"/>
+
+<!-- Divisi -->
+<line x1="1010"
+      y1="630"
+      x2="1010"
+      y2="675"
+      class="line"
+      marker-end="url(#arrowhead)"/>
+
+
+<!-- ========================================================= -->
+<!-- JALUR KE KETUA BADAN PENGELOLA KAWASAN -->
+<!-- TITIK DI ANTARA KOMISI TEKNIS DAN TENAGA AHLI -->
+<!-- ========================================================= -->
+
+<!-- Titik tengah antara Komisi Teknis dan Tenaga Ahli -->
+<line x1="375"
+      y1="630"
+      x2="375"
+      y2="845"
+      class="line"/>
+
+<!-- Masuk ke Ketua Badan Pengelola Kawasan -->
+<line x1="375"
+      y1="845"
+      x2="600"
+      y2="845"
+      class="line"/>
+
+<line x1="600"
+      y1="845"
+      x2="600"
+      y2="865"
+      class="line"
+      marker-end="url(#arrowhead)"/>
+
+    <!-- ========================================================= -->
+    <!-- KETUA BADAN PENGELOLA KAWASAN -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="865"
+          width="420"
+          height="150"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="915"
+          class="box-title">
+        KETUA
+    </text>
+
+    <text x="600"
+          y="950"
+          class="box-title">
+        BADAN PENGELOLA
+    </text>
+
+    <text x="600"
+          y="985"
+          class="box-title">
+        KAWASAN
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA KAWASAN -> KETUA HARIAN KAWASAN -->
+    <!-- ========================================================= -->
+
+    <line x1="600"
+          y1="1015"
+          x2="600"
+          y2="1060"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA HARIAN KAWASAN -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="1070"
+          width="420"
+          height="125"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="1122"
+          class="box-title">
+        KETUA HARIAN
+    </text>
+
+    <text x="600"
+          y="1157"
+          class="box-title">
+        KAWASAN
+    </text>
+
+
+    <!-- ========================================================= -->
+    <!-- KETUA HARIAN KAWASAN -> MANAJER GEOSITE -->
+    <!-- ========================================================= -->
+
+    <line x1="600"
+          y1="1195"
+          x2="600"
+          y2="1240"
+          class="line"
+          marker-end="url(#arrowhead)"/>
+
+
+    <!-- ========================================================= -->
+    <!-- MANAJER GEOSITE -->
+    <!-- ========================================================= -->
+
+    <rect x="390"
+          y="1250"
+          width="420"
+          height="125"
+          rx="35"
+          class="box"/>
+
+    <text x="600"
+          y="1325"
+          class="box-title">
+        MANAJER GEOSITE
+    </text>
+
+
+</svg>
+
