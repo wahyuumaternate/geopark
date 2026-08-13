@@ -31,7 +31,12 @@ Route::get('/warisan-bumi/budaya', [WarisanBumiController::class, 'budaya'])->na
 Route::get('/warisan-bumi-data', [WarisanBumiController::class, 'index'])->name('warisan-bumi.data.index');
 Route::get('/warisan-bumi-data/{warisanBumi:slug}', [WarisanBumiController::class, 'show'])->name('warisan-bumi.data.show');
 
-Route::get('/warisan-bumi/{section}/{slug}', [WarisanBumiController::class, 'detail'])->name('warisan-bumi.detail');
+Route::get('/warisan-bumi/geologi/peta', [WarisanBumiController::class, 'petaGeologi'])->name('warisanbumi.geologi.peta');
+Route::get('/warisan-bumi/biologi/peta', [WarisanBumiController::class, 'petaBiologi'])->name('warisanbumi.biologi.peta');
+Route::get('/warisan-bumi/budaya/peta', [WarisanBumiController::class, 'petaBudaya'])->name('warisanbumi.budaya.peta');
+
+// tetap di bawah:
+Route::get('/warisan-bumi/{section}/{slug}', [WarisanBumiController::class, 'detail'])->name('warisanbumi.detail');
 
 // Informasi
 // Berita

@@ -118,7 +118,25 @@
                         Youth Forum
                     </a>
                 </li>
+                {{-- Peta --}}
+                <li class="nav-item dropdown {{ request()->is('warisan-bumi/*/peta') ? 'active' : '' }}">
+                    <a class="nav-link" href="#" id="petaDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Peta
+                    </a>
 
+                    <div class="dropdown-menu" aria-labelledby="petaDropdown">
+                        <a class="dropdown-item " href="{{ route('warisanbumi.geologi.peta') }}">
+                            Peta Warisan Geologi
+                        </a>
+                        <a class="dropdown-item " href="{{ route('warisanbumi.biologi.peta') }}">
+                            Peta Warisan Hayati
+                        </a>
+                        <a class="dropdown-item " href="{{ route('warisanbumi.budaya.peta') }}">
+                            Peta Warisan Budaya
+                        </a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
