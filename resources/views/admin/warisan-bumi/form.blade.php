@@ -23,6 +23,24 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->exists ? 'Edit' : 'Tambah' }} Data Warisan {{ $title }}</h5>
 
+                        @php
+                            // Nilai jenis saat ini (dari input lama / data tersimpan).
+                            $currentJenis = old('jenis', $item->jenis);
+
+                            // Kalau form "Tambah" dan jenis belum diisi, otomatis pilih
+                            // sesuai section halaman ini. Sesuaikan mapping ini kalau
+                            // aturan section -> jenis di project kamu berbeda.
+                            $sectionJenisMap = [
+                                'geologi' => 'Geologi',
+                                'biologi' => 'Hayati',
+                                'budaya' => 'Budaya',
+                            ];
+
+                            if (!$currentJenis && isset($section) && isset($sectionJenisMap[$section])) {
+                                $currentJenis = $sectionJenisMap[$section];
+                            }
+                        @endphp
+
                         <form
                             action="{{ $item->exists ? route('admin.warisanbumi.update', $item) : route('admin.warisanbumi.store', $section) }}"
                             method="POST" enctype="multipart/form-data">
@@ -46,34 +64,30 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="jenis" class="col-sm-2 col-form-label">
+                                <label class="col-sm-2 col-form-label">
                                     Jenis <span class="text-danger">*</span>
                                 </label>
 
                                 <div class="col-sm-10">
-                                    <select class="form-select @error('jenis') is-invalid @enderror" id="jenis"
-                                        name="jenis" required>
+                                    @php
+                                        $jenisMap = [
+                                            'geologi' => 'Geologi',
+                                            'biologi' => 'Hayati',
+                                            'budaya' => 'Budaya',
+                                        ];
 
-                                        <option value="">-- Pilih Jenis --</option>
+                                        $jenis = $jenisMap[$section] ?? null;
+                                    @endphp
 
-                                        <option value="Geologi"
-                                            {{ old('jenis', $item->jenis) == 'Geologi' ? 'selected' : '' }}>
-                                            Geologi
-                                        </option>
+                                    <input type="hidden" name="jenis" value="{{ $jenis }}">
 
-                                        <option value="Budaya"
-                                            {{ old('jenis', $item->jenis) == 'Budaya' ? 'selected' : '' }}>
-                                            Budaya
-                                        </option>
-
-                                        <option value="Hayati"
-                                            {{ old('jenis', $item->jenis) == 'Hayati' ? 'selected' : '' }}>
-                                            Hayati
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" value="{{ $jenis }}" readonly
+                                        style="background-color: #e2e3e5;">
 
                                     @error('jenis')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <div class="invalid-feedback d-block">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                             </div>
