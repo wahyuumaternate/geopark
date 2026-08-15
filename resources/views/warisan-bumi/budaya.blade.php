@@ -59,10 +59,11 @@
 
                 <div class="col-md-6 pl-md-5 py-5 ftco-animate">
                     <span class="subheading">Kesenian</span>
-                    <h3 class="mb-3">Tari Soya-soya & Tari Lenso</h3>
+                    <h3 class="mb-3">Tari Soya-soya & Tari Tide-Tide</h3>
                     <p>
                         Tari Soya-soya menggambarkan semangat juang masyarakat Ternate,
-                        sementara Tari Lenso menjadi simbol keramahan dalam menyambut tamu.
+                        sementara Tari Tide-Tide menggambarkan nilai kebersamaan, keceriaan, dan interaksi sosial masyarakat
+                        Ternate.
                         Kedua kesenian ini rutin ditampilkan dalam berbagai acara adat dan
                         kunjungan wisata budaya.
                     </p>
