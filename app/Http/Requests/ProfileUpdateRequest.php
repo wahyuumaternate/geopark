@@ -16,16 +16,16 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'lowercase',
-                'email',
-                'max:255',
-                Rule::unique(User::class)->ignore($this->user()->id),
-            ],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
+
+        // Youth Forum tidak boleh mengubah nama
+        if ($this->user()->role === 'youth_forum') {
+            $rules['name'] = ['required', 'string', 'max:255', Rule::in([$this->user()->name])];
+        }
+
+        return $rules;
     }
 }

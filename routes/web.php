@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UnduhController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnduhController as PublicUnduhController;
 use App\Http\Controllers\Admin\WarisanBumiController as AdminWarisanBumiController;
 use App\Http\Controllers\Admin\InformasiController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WarisanBumiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminUserController;
 
 // Beranda
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -67,10 +69,9 @@ Route::get('/berita-dan-informasi', function () {
     return view('berita-dan-informasi');
 })->name('berita-dan-informasi');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
-    ->middleware(['auth', 'verified'])
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -81,12 +82,13 @@ Route::middleware('auth')->group(function () {
     // ==================== ADMIN ====================
     Route::prefix('admin')
         ->name('admin.')
+        ->middleware('restrict.youthforum')
         ->group(function () {
             // Geologi
             // Warisan Bumi: Geologi, Biologi, Hayati
             Route::get('geologi', [AdminWarisanBumiController::class, 'indexGeologi'])->name('geologi.index');
             Route::get('biologi', [AdminWarisanBumiController::class, 'indexBiologi'])->name('biologi.index');
-            Route::get('hayati', [AdminWarisanBumiController::class, 'indexHayati'])->name('hayati.index');
+            Route::get('budaya', [AdminWarisanBumiController::class, 'indexBudaya'])->name('budaya.index');
 
             // Create/Edit — 1 halaman untuk ketiga section
             Route::get('warisan-bumi/create/{section}', [AdminWarisanBumiController::class, 'create'])
@@ -137,6 +139,12 @@ Route::middleware('auth')->group(function () {
             Route::get('unduh/{unduh}/edit', [UnduhController::class, 'edit'])->name('unduh.edit');
             Route::put('unduh/{unduh}', [UnduhController::class, 'update'])->name('unduh.update');
             Route::delete('unduh/{unduh}', [UnduhController::class, 'destroy'])->name('unduh.destroy');
+
+            // Pengguna
+            Route::get('users', [AdminUserController::class, 'index'])->name('users.index');
+            Route::post('users', [AdminUserController::class, 'store'])->name('users.store');
+            Route::put('users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+            Route::delete('users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
         });
 });
 

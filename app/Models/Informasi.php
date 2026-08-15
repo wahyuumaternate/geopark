@@ -4,30 +4,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Informasi extends Model
 {
     use HasFactory;
 
+    // Nilai kategori — samakan dengan yang dipakai di route ('berita', 'youth-forum')
+    const KATEGORI_BERITA = 'berita';
+    const KATEGORI_YOUTH_FORUM = 'youth-forum';
+
     protected $table = 'informasi';
 
-    protected $fillable = [
-        'judul',
-        'slug',
-        'ringkasan',
-        'isi',
-        'gambar',
-        'kategori',
-        'status',
-        'diterbitkan_pada',
-    ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = ['user_id', 'judul', 'slug', 'ringkasan', 'isi', 'gambar', 'kategori', 'status', 'diterbitkan_pada'];
 
-    protected $casts = [
-        'status' => 'boolean',
-        'diterbitkan_pada' => 'datetime',
-    ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'status' => 'boolean',
+            'diterbitkan_pada' => 'datetime',
+        ];
+    }
 
-    // Konstanta kategori supaya tidak salah ketik di tempat lain
-    public const KATEGORI_BERITA = 'berita';
-    public const KATEGORI_YOUTH_FORUM = 'youth-forum';
+    /**
+     * User yang membuat/memiliki data informasi ini.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

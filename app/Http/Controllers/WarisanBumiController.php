@@ -11,7 +11,7 @@ class WarisanBumiController extends Controller
     // Peta section -> label yang dipakai di tampilan
     protected array $sectionLabels = [
         'geologi' => 'Warisan Geologi',
-        'biologi' => 'Warisan Biologi',
+        'biologi' => 'Warisan Hayati',
         'budaya' => 'Warisan Budaya',
     ];
 
@@ -37,11 +37,11 @@ class WarisanBumiController extends Controller
 
     public function biologi()
     {
-        $items = WarisanBumi::where('section', 'biologi')->latest()->get();
+        $items = WarisanBumi::where('section', 'hayati')->latest()->get();
 
         return view('warisan-bumi.biologi', [
             'items' => $items,
-            'section' => 'biologi',
+            'section' => 'Hayati',
         ]);
     }
 

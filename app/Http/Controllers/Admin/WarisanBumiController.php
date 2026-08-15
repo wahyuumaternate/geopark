@@ -14,7 +14,7 @@ class WarisanBumiController extends Controller
     protected array $sectionMap = [
         'geologi' => ['label' => 'Geologi', 'route' => 'admin.geologi.index'],
         'biologi' => ['label' => 'Biologi', 'route' => 'admin.biologi.index'],
-        'budaya'  => ['label' => 'Hayati',  'route' => 'admin.hayati.index'],
+        'budaya' => ['label' => 'Budaya', 'route' => 'admin.budaya.index'],
     ];
 
     /* ===================== INDEX (beda halaman per section) ===================== */
@@ -29,7 +29,7 @@ class WarisanBumiController extends Controller
         return $this->buildIndex('biologi');
     }
 
-    public function indexHayati()
+    public function indexBudaya()
     {
         return $this->buildIndex('budaya');
     }
@@ -37,9 +37,9 @@ class WarisanBumiController extends Controller
     protected function buildIndex(string $section)
     {
         return view('admin.warisan-bumi.index', [
-            'items'   => WarisanBumi::where('section', $section)->latest()->get(),
+            'items' => WarisanBumi::where('section', $section)->latest()->get(),
             'section' => $section,
-            'title'   => $this->sectionMap[$section]['label'],
+            'title' => $this->sectionMap[$section]['label'],
         ]);
     }
 
@@ -50,9 +50,9 @@ class WarisanBumiController extends Controller
         $this->validateSection($section);
 
         return view('admin.warisan-bumi.form', [
-            'item'    => new WarisanBumi(['section' => $section]),
+            'item' => new WarisanBumi(['section' => $section]),
             'section' => $section,
-            'title'   => $this->sectionMap[$section]['label'],
+            'title' => $this->sectionMap[$section]['label'],
         ]);
     }
 
@@ -80,9 +80,9 @@ class WarisanBumiController extends Controller
         $this->validateSection($warisanBumi->section);
 
         return view('admin.warisan-bumi.form', [
-            'item'    => $warisanBumi,
+            'item' => $warisanBumi,
             'section' => $warisanBumi->section,
-            'title'   => $this->sectionMap[$warisanBumi->section]['label'],
+            'title' => $this->sectionMap[$warisanBumi->section]['label'],
         ]);
     }
 
@@ -125,15 +125,15 @@ class WarisanBumiController extends Controller
     protected function validateData(Request $request): array
     {
         return $request->validate([
-            'nama'      => 'required|string|max:255',
-            'jenis'     => 'nullable|string|max:255',
-            'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'lokasi'    => 'required|string',
+            'nama' => 'required|string|max:255',
+            'jenis' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'lokasi' => 'required|string',
             'kelurahan' => 'nullable|string|max:255',
             'kecamatan' => 'nullable|string|max:255',
-            'kota'      => 'nullable|string|max:255',
-            'x'         => 'nullable|numeric',
-            'y'         => 'nullable|numeric',
+            'kota' => 'nullable|string|max:255',
+            'x' => 'nullable|numeric',
+            'y' => 'nullable|numeric',
             'deskripsi' => 'required|string',
         ]);
     }
@@ -144,11 +144,7 @@ class WarisanBumiController extends Controller
         $original = $slug;
         $i = 1;
 
-        while (
-            WarisanBumi::where('slug', $slug)
-                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
-                ->exists()
-        ) {
+        while (WarisanBumi::where('slug', $slug)->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))->exists()) {
             $slug = $original . '-' . $i++;
         }
 

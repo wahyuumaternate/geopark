@@ -9,6 +9,9 @@ return new class extends Migration {
     {
         Schema::create('informasi', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+
             $table->string('judul');
             $table->string('slug')->unique();
             $table->text('ringkasan')->nullable();
@@ -17,6 +20,7 @@ return new class extends Migration {
             $table->string('kategori')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamp('diterbitkan_pada')->nullable();
+
             $table->timestamps();
         });
     }

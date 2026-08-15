@@ -33,10 +33,18 @@ class InformasiController extends Controller
         ]);
     }
 
-    public function indexYouthForum()
+    public function indexYouthForum(Request $request)
     {
+        $query = Informasi::where('kategori', Informasi::KATEGORI_YOUTH_FORUM);
+
+        // Role 'youth_forum' hanya melihat data yang dia input sendiri.
+        // Role lain (mis. admin) tetap melihat semua data youth forum.
+        if ($request->user()->role === 'youth_forum') {
+            $query->where('user_id', $request->user()->id);
+        }
+
         return view('admin.informasi.index', [
-            'items' => Informasi::where('kategori', Informasi::KATEGORI_YOUTH_FORUM)->latest()->get(),
+            'items' => $query->latest()->get(),
             'kategori' => Informasi::KATEGORI_YOUTH_FORUM,
             'title' => 'Youth Forum',
         ]);
@@ -54,18 +62,19 @@ class InformasiController extends Controller
             'title' => $this->kategoriMap[$kategori]['label'],
         ]);
     }
+
     public function store(Request $request, string $kategori)
     {
         $this->validateKategori($kategori);
 
-        $data = $this->validateData($request);
+        $data = $this->validateData($request, isUpdate: false);
         $data['kategori'] = $kategori;
+        $data['user_id'] = $request->user()->id;
         $data['slug'] = $this->generateSlug($data['judul']);
         $data['status'] = $request->boolean('status');
 
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('informasi', 'public');
-        }
+        // Gambar wajib saat membuat data baru.
+        $data['gambar'] = $request->file('gambar')->store('informasi', 'public');
 
         Informasi::create($data);
 
@@ -74,9 +83,10 @@ class InformasiController extends Controller
         return redirect()->route($this->kategoriMap[$kategori]['route']);
     }
 
-    public function edit(Informasi $informasi)
+    public function edit(Request $request, Informasi $informasi)
     {
         $this->validateKategori($informasi->kategori);
+        $this->authorizeOwnership($request, $informasi);
 
         return view('admin.informasi.form', [
             'item' => $informasi,
@@ -87,13 +97,16 @@ class InformasiController extends Controller
 
     public function update(Request $request, Informasi $informasi)
     {
-        $data = $this->validateData($request);
+        $this->authorizeOwnership($request, $informasi);
+
+        $data = $this->validateData($request, isUpdate: true);
         $data['status'] = $request->boolean('status');
 
         if ($data['judul'] !== $informasi->judul) {
             $data['slug'] = $this->generateSlug($data['judul'], $informasi->id);
         }
 
+        // Gambar opsional saat update — hanya diganti kalau user upload file baru.
         if ($request->hasFile('gambar')) {
             if ($informasi->gambar) {
                 Storage::disk('public')->delete($informasi->gambar);
@@ -101,6 +114,7 @@ class InformasiController extends Controller
             $data['gambar'] = $request->file('gambar')->store('informasi', 'public');
         }
 
+        // user_id tetap milik pembuat awal — tidak diubah saat update.
         $informasi->update($data);
 
         flash()->success('Data ' . strtolower($this->kategoriMap[$informasi->kategori]['label']) . ' berhasil diperbarui.');
@@ -108,8 +122,10 @@ class InformasiController extends Controller
         return redirect()->route($this->kategoriMap[$informasi->kategori]['route']);
     }
 
-    public function destroy(Informasi $informasi)
+    public function destroy(Request $request, Informasi $informasi)
     {
+        $this->authorizeOwnership($request, $informasi);
+
         $route = $this->kategoriMap[$informasi->kategori]['route'];
 
         if ($informasi->gambar) {
@@ -125,13 +141,17 @@ class InformasiController extends Controller
 
     /* ===================== HELPERS ===================== */
 
-    protected function validateData(Request $request): array
+    /**
+     * Validasi data form. Gambar WAJIB saat create, OPSIONAL saat update
+     * (kalau tidak diupload ulang, gambar lama tetap dipakai).
+     */
+    protected function validateData(Request $request, bool $isUpdate): array
     {
         return $request->validate([
             'judul' => 'required|string|max:255',
             'ringkasan' => 'nullable|string|max:500',
             'isi' => 'required|string',
-            'gambar' => 'nullable|image|max:2048',
+            'gambar' => ($isUpdate ? 'nullable' : 'required') . '|image|max:2048',
             'diterbitkan_pada' => 'nullable|date',
         ]);
     }
@@ -152,5 +172,16 @@ class InformasiController extends Controller
     protected function validateKategori(string $kategori): void
     {
         abort_unless(array_key_exists($kategori, $this->kategoriMap), 404);
+    }
+
+    /**
+     * Role 'youth_forum' hanya boleh edit/update/destroy data miliknya sendiri.
+     * Role lain (mis. admin) tidak dibatasi.
+     */
+    protected function authorizeOwnership(Request $request, Informasi $informasi): void
+    {
+        if ($request->user()->role === 'youth_forum') {
+            abort_unless($informasi->user_id === $request->user()->id, 403, 'Anda hanya dapat mengelola data yang Anda input sendiri.');
+        }
     }
 }

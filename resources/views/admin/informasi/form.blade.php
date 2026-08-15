@@ -60,7 +60,8 @@
 
                             {{-- Gambar --}}
                             <div class="row mb-3">
-                                <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
+                                <label for="gambar" class="col-sm-2 col-form-label">Gambar <span
+                                        class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control @error('gambar') is-invalid @enderror"
                                         id="gambar" name="gambar" accept="image/*" onchange="previewImage(event)">

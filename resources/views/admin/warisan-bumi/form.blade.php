@@ -32,11 +32,13 @@
                             @endif
 
                             <div class="row mb-3">
-                                <label for="nama" class="col-sm-2 col-form-label">Nama <span
-                                        class="text-danger">*</span></label>
+                                <label for="nama" class="col-sm-2 col-form-label">
+                                    Nama <span class="text-danger">*</span>
+                                </label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('nama') is-invalid @enderror"
                                         id="nama" name="nama" value="{{ old('nama', $item->nama) }}" required>
+
                                     @error('nama')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -44,21 +46,32 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="jenis" class="col-sm-2 col-form-label">Jenis</label>
+                                <label for="jenis" class="col-sm-2 col-form-label">
+                                    Jenis <span class="text-danger">*</span>
+                                </label>
+
                                 <div class="col-sm-10">
                                     <select class="form-select @error('jenis') is-invalid @enderror" id="jenis"
-                                        name="jenis">
+                                        name="jenis" required>
+
                                         <option value="">-- Pilih Jenis --</option>
+
                                         <option value="Geologi"
                                             {{ old('jenis', $item->jenis) == 'Geologi' ? 'selected' : '' }}>
-                                            Geologi</option>
-                                        <option value="Biologi"
-                                            {{ old('jenis', $item->jenis) == 'Biologi' ? 'selected' : '' }}>
-                                            Biologi</option>
+                                            Geologi
+                                        </option>
+
+                                        <option value="Budaya"
+                                            {{ old('jenis', $item->jenis) == 'Budaya' ? 'selected' : '' }}>
+                                            Budaya
+                                        </option>
+
                                         <option value="Hayati"
                                             {{ old('jenis', $item->jenis) == 'Hayati' ? 'selected' : '' }}>
-                                            Hayati</option>
+                                            Hayati
+                                        </option>
                                     </select>
+
                                     @error('jenis')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -66,13 +79,19 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="image" class="col-sm-2 col-form-label">Gambar</label>
+                                <label for="image" class="col-sm-2 col-form-label">
+                                    Gambar <span class="text-danger">*</span>
+                                </label>
+
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                        id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                                        id="image" name="image" accept="image/*" required
+                                        onchange="previewImage(event)">
+
                                     @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+
                                     <div class="mt-2">
                                         <img id="preview"
                                             src="{{ $item->image ? asset('storage/' . $item->image) : '' }}" alt="Preview"

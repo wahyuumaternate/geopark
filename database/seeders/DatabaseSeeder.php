@@ -21,6 +21,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Super Administrator',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
+            'role' => 'admin',
+        ]);
+        User::create([
+            'name' => 'Wahyu JIH',
+            'email' => 'wahyu@gmail.com',
+            'password' => bcrypt('wahyu@gmail.com'),
+            'role' => 'youth_forum',
         ]);
 
         $this->call([WarisanBumiSeeder::class]);
